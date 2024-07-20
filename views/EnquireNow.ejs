@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquiry Form</title>
+    <link rel="stylesheet" href="enquire.css">
+</head>
+<body>
+<div class="enquiry">
+    <div class="container3">
+        <div class="form-left">
+            <h2>Enquiry Form</h2>
+            <p>We are here to provide transparent, seamless, and informative care. Whether you need medical equipment, nursing/elder care, doctor consultation, or lab tests, reach out to us with any queries. Follow these steps to submit your enquiry:</p>
+            <ul>
+                <li>Step 1 - Select Enquiry Type: Choose the service you are interested in.</li>
+                <li>Step 2 - Enter your contact details - Name, Email ID & Phone no</li>
+                <li>Step 3 - Your Question: Provide details about your query.</li>
+                <li>Step 4 - Preferred Contact Time: Let us know your preferred time for us to contact you.</li>
+                <li>Step 5 - Submit: Click the submit button to send your request to our team.</li>
+            <p>Our team will get in touch with you shortly to assist with your needs.</p>
+            </ul>
+        </div>
+        <div class="form-right">
+            <h3>Please select one of the below:</h3>
+            <div class="button-group">
+                <button class="active" data-form="enquiry">Enquiry</button>
+                <button data-form="feedback">Feedback</button>
+                <!-- <button data-form="others">Others</button> -->
+            </div>
+            <form id="enquiry-form" class="form-content active">
+                <div class="form-group">
+                    <label for="enquiry-type">Enquiry Type</label>
+                    <select id="enquiry-type">
+                        <option value="">- Select -</option>
+                        <option value="nursing-care">Nursing Care</option>
+                        <option value="elder-care">Elder Care</option>
+                        <option value="doctor-consultation">Doctor Consultation</option>
+                        <option value="buy-rent-medical-equipment">Buy/Rent Medical Equipment</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email ID</label>
+                    <input type="email" id="email" placeholder="Email ID">
+                </div>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" placeholder="Enter Name">
+                </div>
+                <div class="form-group">
+                    <label for="mobile">Mobile No.</label>
+                    <input type="text" id="mobile" placeholder="Enter Mobile No.">
+                </div>
+                <div class="form-group">
+                    <label for="time">Preferred Time To Call</label>
+                    <select id="time">
+                        <option value="">- Select -</option>
+                        <option value="08:00-09:00">08:00 AM - 09:00 AM</option>
+                        <option value="09:00-10:00">09:00 AM - 10:00 AM</option>
+                        <option value="10:00-11:00">10:00 AM - 11:00 AM</option>
+                        <option value="11:00-12:00">11:00 AM - 12:00 PM</option>
+                        <option value="12:00-13:00">12:00 PM - 01:00 PM</option>
+                        <option value="13:00-14:00">01:00 PM - 02:00 PM</option>
+                        <option value="14:00-15:00">02:00 PM - 03:00 PM</option>
+                        <option value="15:00-16:00">03:00 PM - 04:00 PM</option>
+                        <option value="16:00-17:00">04:00 PM - 05:00 PM</option>
+                        <option value="17:00-18:00">05:00 PM - 06:00 PM</option>
+                        <option value="18:00-19:00">06:00 PM - 07:00 PM</option>
+                        <option value="19:00-20:00">07:00 PM - 08:00 PM</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="remark">Remark</label>
+                    <textarea id="remark" placeholder="Please enter remark here"></textarea>
+                </div>
+                <div class="submit">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+
+            <form id="feedback-form" class="form-content">
+                <div class="form-group">
+                    <label for="feedback-email">Email ID</label>
+                    <input type="email" id="feedback-email" placeholder="Email ID">
+                </div>
+                <div class="form-group">
+                    <label for="feedback-name">Name</label>
+                    <input type="text" id="feedback-name" placeholder="Enter Name">
+                </div>
+                <div class="form-group">
+                    <label for="feedback-comments">Comments</label>
+                    <textarea id="feedback-comments" placeholder="Enter your comments"></textarea>
+                </div>
+                <div class="submit">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="contact-info">
+            <button>+91 987654321</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
