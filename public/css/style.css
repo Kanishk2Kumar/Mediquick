@@ -841,3 +841,109 @@ p.awesome_line {
 .form-content.active {
     display: block;
 }
+/* What We Do parnika */
+#WhatWeDo{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.services-all{
+    min-height: 100vh;
+    padding: 0px;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    background: #D8E0D8;
+   
+}
+
+.services-body{
+    height: 100vh;
+    width: 100%;
+    padding: 0 8%;
+    
+}
+
+.services-body h1{
+    position: relative;
+    text-transform: uppercase;
+    text-align: center;
+    padding-top: 10%;
+    margin-bottom: 60px;
+}
+
+.services-body h1::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 5px;
+    background: #298;
+}
+
+.services-body .service-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 30px;
+}
+
+.services-body .service-grid .service-item{
+    background: #e6f2ec;
+    padding: 25px 10px;
+    text-align: center;
+    
+    border-radius: 10px;
+    transition: transform .5s;
+    cursor: pointer;
+    color: #555;
+    font-size: 14px;
+    min-height: 300px;
+    min-width: 100px;
+}
+
+.service-item i{
+    margin-top: 50px;
+}
+ 
+.service-item h3{
+    font-size: 1.7em;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.service-item p{
+    font-size: 1em;
+    color: #333;
+    margin-bottom: 15px;
+    
+}
+
+
+.services-body .service-grid .service-item:hover {
+    transform: scale(1.1);
+    background: #82c9bd;
+    color: #fff;
+}
+.services-body .service-grid .service-item i{
+    font-size: 40px;
+    color: #298;
+    margin-bottom: 10px;
+
+}
+
+.services-body .service-grid .service-item:hover i{
+    color:#fff;
+}
+
+.services-body .service-grid .service-item:hover p{
+    color:#fff;
+}
+
+.services-body .service-grid .service-item h2{
+    margin-bottom: 8px;
+}

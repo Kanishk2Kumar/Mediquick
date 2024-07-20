@@ -35,3 +35,42 @@ article h4 {
   width: 1000px;
   overflow-x: hidden;
 }
+/* All Users Parnika */
+.bg-white{
+  top: 0;
+  left: 0;
+}
+.user-table-body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  height: 100vh;
+  box-sizing: border-box;
+}
+.user-table-container {
+  width: 80%; /* Adjust this value to control the left and right gap */
+  max-width: 1000px; /* Optional: maximum width of the table */
+}
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+}
+.user-table-header, .user-table-cell {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+.user-table-header {
+  background-color: #007bff;
+  color: #fff;
+}
+.user-table-row:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.user-table-row:hover {
+  background-color: #a6c7e9;
+}

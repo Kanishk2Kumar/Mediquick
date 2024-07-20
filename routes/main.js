@@ -23,7 +23,13 @@ router.get("/EnquireNow", (req, res) => {
 router.get("/Doctor", (req, res) => {
   res.render("DoctorConsultation");
 });
+router.get("/WhatWeDo", (req, res) => {
+  res.render("WhatWeDo");
+});
 router.get("/Admin", (req, res) => {
   res.render("Admin");
+});
+router.get("/Admin/AllUsers", (req, res) => {
+  res.render("AllUsers");
 });
 module.exports = router;
