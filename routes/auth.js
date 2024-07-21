@@ -3,6 +3,7 @@ const User = require("../models/User");
 const CryptoJS = require("crypto-js");
 const jwt = require("jsonwebtoken");
 
+const users = [];
 router.get("/", (req, res) => {
     res.render('login', { layout: false, headerType: 'header1' });
 });
@@ -50,7 +51,12 @@ router.post("/login", async (req, res) => {
               );
         
         const { password, ...others } = user._doc;
-
+        users.push({
+            id: req.body.id, 
+            name: req.body.name,
+            email: req.body.email,
+            password: hashedPassword,
+        })
         res.status(200).json({...others, accessToken});
     } catch (err) {
         res.status(500).json(err);

@@ -26,15 +26,18 @@
                     <ul>
                         <li><a href="#"><i class="fas fa-heartbeat"></i> Elder Care</a></li>
                         <li><a href="#"><i class="fas fa-user-nurse"></i> Nursing Care</a></li>
-                        <li><a href="#"><i class="fas fa-user-md"></i> Doctor Consultation</a></li>
+                        <li><a href="/Doctor"><i class="fas fa-user-md"></i> Doctor Consultation</a></li>
                     </ul>
                 </div>
             </li>
             <li><a href="/EnquireNow" class="button"> Enquire Now </a></li>
         </ul>
         <div class="profile-section">
-            <a href="/auth" class="profile"><i class="fas fa-user-circle"></i> Profile <i
-                    class="fas fa-caret-down"></i></a>
+            <% if (SignedIn) { %>
+                <a href="#" class="profile"><i class="fas fa-user-circle"></i> <%= username %> <i class="fas fa-caret-down"></i></a>
+            <% }else { %>
+                <a href="/login" class="profile"><i class="fas fa-user-circle"></i> Profile <i class="fas fa-caret-down"></i></a>
+            <% } %>
             <div class="dropdown-menu">
                 <ul>
                     <li><a href="#"><i class="fas fa-edit"></i> Edit Profile</a></li>

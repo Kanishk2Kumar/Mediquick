@@ -947,3 +947,531 @@ p.awesome_line {
 .services-body .service-grid .service-item h2{
     margin-bottom: 8px;
 }
+/* Doctor ConsultationHarshali */
+#DoctorConsultation {
+    font-family: 'Times New Roman', serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #D8E0D8;
+}
+
+.container {
+    display: flex;
+    width: 90%;
+    height: 90%;
+    background-color: #D8E0D8;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.text-section {
+    padding: 40px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #D8E0D8;
+}
+
+.certified-doctors{
+    color: #1F8570; /* Green color */
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+}
+
+h1 {
+    margin: 0 0 20px 0;
+    font-size: 50px;
+    color: #333;
+    line-height: 1.2;
+}
+
+.points {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-left: -20px;
+}
+
+.point {
+    flex: 1 1 50%;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.point i {
+    font-size: 24px; /* Adjusted icon size */
+    color: #296564; /* Icon color */
+    margin-right: 10px;
+}
+
+.point-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.point h2 {
+    margin: 0;
+    font-size: 13px;
+    color: #333;
+    font-weight: bold;
+}
+
+.point p {
+    margin: 0;
+    font-size: 13px;
+    color: #555;
+}
+
+.contact-button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 16px;
+    background-color: #073D3D;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    text-align: center;
+    width: 3cm; /* Set width to approximately 3 cm */
+    box-sizing: border-box;
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.contact-button:hover {
+    background-color: #296564; /* Light green color */
+}
+
+.image-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 30px;
+}
+
+.image-section img {
+    display: block;
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+
+.equal-columns {
+    display: flex;
+    width: 90%;
+    margin: 10px 0;
+    background-color: #D8E0D8;
+}
+
+.doctor-container {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px; /* Space between boxes */
+    padding: 20px;
+    background-color: #E0EFF6; /* Background color for the doctor container */
+    border-radius: 8px 0 0 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+    column-gap: 30px; /* Space between columns */
+    row-gap: 30px; /* Space between rows */
+}
+
+.doctor-box {
+    background-color: #C8D5B7;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 220px; /* Width of the boxes */
+    height: 220px; /* Height of the boxes */
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.doctor-box img {
+    width: 80px; /* Adjust the width as needed */
+    height: 80px; /* Adjust the height as needed */
+    border-radius: 50%;
+    margin-bottom: 10px;
+    object-fit: cover; /* Ensure the image covers the area while maintaining its aspect ratio */
+}
+
+.doctor-box h3 {
+    margin: 10px 0 5px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.doctor-box p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.doctor-box:nth-child(2),
+.doctor-box:nth-child(4) {
+    transform: translateY(40px); /* Move the second row down by 40px (approximately 3cm) */
+}
+
+.info-section {
+    flex: 1;
+    padding: 20px;
+    background-color: #E0EFF6; /* Background color for the info section */
+    border-radius: 0 8px 8px 0; /* Optional: Add border-radius for rounded corners */
+}
+
+.info-section .qualified-doctors {
+    color: #1F8570; /* Green color */
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 150px;
+}
+
+.info-section h1 {
+    font-size: 40px;
+    color: #333;
+    margin-top: 20px;
+}
+
+.info-section p {
+    margin-top: 34px;
+    font-size: 17px;
+    color: #555;
+}
+.steps-section {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 20px auto; /* Adjust as needed */
+    margin-bottom: 50px;
+    margin-top: 30px;
+}
+
+.step-box {
+    background-color: #F8F6DD; /* Background color for the step boxes */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 22%; /* Adjust width as needed */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+}
+
+.step-box:hover {
+    transform: scale(1.05); /* Slightly enlarge the box on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increase shadow for a lifted effect */
+}
+
+.step-box i {
+    font-size: 30px; /* Adjust icon size as needed */
+    color: #1F8570; /* Icon color */
+    margin-bottom: 10px;
+}
+
+.step-box h3 {
+    margin: 10px 0 5px 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.step-box p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.custom-h2 {
+    font-size: 28px; /* Set font size as needed */
+    color: #333;
+    margin: 0;
+    line-height: 1.2;
+    margin-top: 40px;
+}
+
+
+.image-section1 {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 70px;
+}
+
+.image-section1 img {
+    display: block;
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+.custom-h2-question {
+    font-size: 36px; /* Adjust the font size as needed */
+    color: #333;
+    margin: 0;
+    line-height: 1.2;
+    margin-top: 20px; /* Adjust the top margin as needed */
+}
+.point-description {
+    font-size: 16px; /* Adjust font size as needed */
+    color: #555; /* Text color */
+    margin-bottom: 20px; /* Space below the paragraph */
+    line-height: 1.6; /* Line height for readability */
+    margin-left: 20px;
+}
+.point1 {
+    flex: 1 1 50%;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.point1 i {
+    font-size: 24px; /* Adjusted icon size */
+    color: #296564; /* Icon color */
+    margin-right: 10px;
+}
+
+.point1-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.point1 h2 {
+    margin: 0;
+    font-size: 17px;
+    color: #333;
+    font-weight: bold;
+}
+.docinfo_container {
+    background-color: #E0EFF6;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 85%;
+    max-width: 1200px;
+    border-radius: 10px ;
+}
+.docinfo_container .our-doctors {
+    color: #1F8570; /* Green color */
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.docinfo_container h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+.docinfo_container p {
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+.docinfo_doctor-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+.docinfo_doctor-box {
+    background-color: #F8F6DD;
+    border-radius: 10px;
+    padding: 20px;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.docinfo_doctor-box:hover {
+    transform: scale(1.05); /* Slightly enlarge the box */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increase the shadow */
+}
+.docinfo_doctor-box img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+.docinfo_doctor-box h3 {
+    font-size: 1.2em;
+    margin: 10px 0 5px;
+}
+.docinfo_doctor-box p {
+    margin: 5px 0;
+    font-size: 12px;
+}
+.docinfo_see-more-button {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 10px 20px;
+    background-color: #1F8570; /* Green color */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.docinfo_see-more-button:hover {
+    background-color: #296564; /* Lighter green color */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+/* Footer Section Harshali */
+#footer_container{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    min-height: 50vh;
+     background-color: #3a6c69;
+     position: relative;
+     width: 100%;
+     min-height: 350px;
+     padding: 3rem 1rem;
+     border-radius: 50px 50px 0 0;
+}
+.container_footer {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+
+}
+.footer_row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-items: flex-start;
+}
+
+.footer_col{
+    min-width: 250px;
+    color:#f2f2f2f2;
+    font-family: poppins;
+    padding: 2rem;
+}
+.footer_col .flogo{
+    width: 130px;
+    margin-bottom:25px;
+    margin-left: -10px;
+}
+
+.footer_col h3{
+    color:#D8E0D8;
+    margin-bottom: 20px;
+    position: relative;
+    cursor: pointer;
+}
+.footer_col h3::after{
+    content: '';
+    height:3px;
+    width:0px;
+    background-color: #F8EE00;
+    position: absolute;
+    bottom: 0;
+    left:0;
+    transition: 0.3s ease;
+
+}
+.footer_col h3:hover::after{
+    width:30px
+}
+.footer_col .fsocial a i{
+    color:#D8E0D8;
+    margin-top:2rem;
+    margin-right: 5px;
+    transition: 0.3s ease;
+    font-size: 25px
+}
+.footer_col .fsocial a:hover i {
+    color: #F8EE00; /* Color on hover */
+}
+
+.footer_col .flinks a{
+    display: block;
+    text-decoration: none;
+    color:#f2f2f2;
+    margin-bottom: 5px;
+    position: relative;
+    transition: 0.3s ease;
+}
+.footer_col .flinks a::before{
+    content:'';
+    height: 16px;
+    width:3px;
+    position: absolute;
+    top:5px;
+    left:-10px;
+    background-color: #F8EE00;
+    transition: 0.5s ease;
+    opacity: 0;
+}
+.footer_col .flinks a:hover::before{
+    opacity: 1;
+}
+.footer_col .flinks a:hover{
+    transform: translateX(-8px);
+    color:#D8E0D8;
+}
+
+.footer_col .fcontact-details{
+    display: inline-flex;
+    justify-content: space-between;
+}
+.footer_col .fcontact-details i{
+    margin-right:15px;
+}
+
+/********** Responsive Design ********/
+@media(max-width:900px)
+{
+  .footer_row{
+    flex-direction: column;
+  }
+  .footer_col{
+    width: 100%;
+    text-align: left;
+    margin-bottom: 25px;
+  }
+}
+@media(max-width:768px)
+{
+  .footer_row{
+    flex-direction: column;
+  }
+  .footer_col{
+    width: 100%;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+}

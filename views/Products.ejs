@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= products.title %> - Product Details</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Our Products</h1>
+        <div class="product-list">
+            <% products.forEach(product => { %>
+                <div class="product-item">
+                    <img src="<%= product.img %>" alt="<%= product.title %>">
+                    <h2><%= product.title %></h2>
+                    <p><%= product.desc %></p>
+                    <p>$<%= product.price %></p>
+                    <a href="/products/<%= product._id %>">View Details</a>
+                </div>
+            <% }); %>
+        </div>
+
+    <footer>
+        <p>&copy; 2024 Your Company. All rights reserved.</p>
+    </footer>
+</body>
+</html>

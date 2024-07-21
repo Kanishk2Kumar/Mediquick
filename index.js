@@ -8,11 +8,18 @@ const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 
 const userRoute = require("./routes/user");
-const authRoute = require("./routes/auth");
 const productRoute = require("./routes/product");
 const cartRoute = require("./routes/cart");
 const orderRoute = require("./routes/order");
 const mainRoute = require("./routes/main");
+
+const session = require('express-session');
+app.use(session({
+  secret: 'your_secret_key',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false } // Use true if you are using HTTPS
+}));
 
 mongoose
   .connect(process.env.MONGO_URL)
@@ -55,7 +62,6 @@ app.use((req, res, next) => {
 
 // Routes
 app.use("/", mainRoute);
-app.use("/auth", authRoute);
 app.use("/users", userRoute);
 app.use("/product", productRoute);
 app.use("/cart", cartRoute);
