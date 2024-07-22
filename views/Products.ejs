@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Cards</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <br>
+    <!-- Search Bar -->
+    <form action="/search" method="GET" class="search-form">
+        <input type="text" name="q" placeholder="Search Equipment..." class="search-input">
+        <button type="submit" class="search-button">Search</button>
+    </form>
+
+    <div class="product_container">
+        <% data.forEach(function(product) { %>
+            <a href="/product/<%= product._id %>">
+                <div class="product_card" data-categories="<%= product.categories.join(',') %>">
+                    <img src="/<%= product.image %>" alt="Product Image">
+                    <h2><%= product.title %></h2>
+                    <div class="category_button"><%= product.categories.join(', ') %></div>
+                    <p><%= product.description %></p>
+                    <p><%= product.use %></p>
+                </div>
+            </a>
+        <% }); %>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

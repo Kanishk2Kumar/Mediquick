@@ -1,0 +1,17 @@
+<div class="AddProducts_body">
+    <h1 class="aProductss">Edit Profile</h1>
+    <form id="ProfileForm" action="/editProfile" method="post" enctype="multipart/form-data" class="AddProducts_form">
+        <label for="username" class="AddProducts_label">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username" class="AddProducts_input" required>
+
+        <label for="password" class="AddProducts_label">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your new password" class="AddProducts_input" required>
+
+        <label for="diagnosis" class="AddProducts_label">Diagnosis Details</label>
+        <textarea id="diagnosis" name="diagnosis" rows="10" placeholder="Enter diagnosis details" required class="AddProducts_textarea"></textarea>
+
+        <section class="AddProducts_createbutton">
+            <button type="submit">Update Profile</button>
+        </section>
+    </form>
+</div>

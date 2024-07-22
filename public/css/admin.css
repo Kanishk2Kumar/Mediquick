@@ -74,3 +74,176 @@ article h4 {
 .user-table-row:hover {
   background-color: #a6c7e9;
 }
+/* ADD PRODUCTS______________________________________________ */
+:root {
+  --primary-color: #073D3D;
+  --primary-color-dark: #296564;
+  --text-dark: #333333;
+  --white: #E7F4DE;
+  --light-brown: #D8E0D8;
+  /* Added variable for light brown */
+}
+
+/* Add Productss */
+/* Body styles */
+.AddProducts_body {
+  font-family: Arial, sans-serif;
+  background-color: var(--white); /* Light cream */
+  color: var(--text-dark); /* Dark brown */
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* Container styles */
+.aProductss {
+  text-align: center;
+  margin-top: 20px;
+  color: var(--primary-color-dark); /* Light orange */
+}
+
+.AddProducts_form {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff; /* White */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Label and input styles */
+.AddProducts_label {
+  display: block;
+  font-weight: bold;
+  margin-top: 10px;
+  color: var(--primary-color-dark); /* Dark orange */
+}
+
+.AddProducts_input,
+.AddProducts_textarea {
+  width: calc(100% - 20px);
+  padding: 8px;
+  margin-top: 6px;
+  border: 1px solid var(--primary-color-dark); /* Light orange */
+  border-radius: 4px;
+  font-size: 1.2rem;
+}
+
+/* File input style */
+.Imagetaker {
+  margin-top: 10px;
+}
+
+.Imagetaker label {
+  display: block;
+  font-weight: bold;
+  margin-top: 10px;
+  color: var(--primary-color-dark); /* Dark orange */
+}
+
+/* Button style */
+.AddProducts_createbutton {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.AddProducts_createbutton button {
+  padding: 10px 20px;
+  background-color: var(--primary-color-dark); /* Light orange */
+  border: none;
+  border-radius: 4px;
+  color: var(--white); /* White */
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.AddProducts_createbutton button:hover {
+  background-color: var(--primary-color); /* Dark orange */
+}
+
+/* Dropdown styles */
+.dropdown {
+  margin-top: 15px;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.dropbtn {
+  background-color: var(--primary-color-dark); /* Light orange */
+  color: var(--white);
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  width: 100%;
+  text-align: left;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--white); /* Light cream */
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 4px;
+  border: 1px solid var(--light-brown); /* Light brown */
+  width: 100%;
+}
+
+.dropdown-content a {
+  color: var(--text-dark); /* Dark brown */
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border-bottom: 1px solid var(--light-brown); /* Light brown */
+}
+
+.dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-content a:hover {
+  background-color: var(--primary-color-dark); /* Light orange */
+  color: var(--white);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: var(--primary-color); /* Dark orange */
+}
+
+.selected-categories {
+  margin-top: 10px;
+  font-size: 16px;
+  color: var(--text-dark); /* Dark brown */
+}
+
+.category-tag {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--primary-color-dark); /* Light orange */
+  color: var(--white);
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.remove-category {
+  background: none;
+  border: none;
+  color: var(--white); /* White color */
+  font-weight: bold;
+  margin-left: 10px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.remove-category:hover {
+  color: #ff0000; /* Red */
+}
