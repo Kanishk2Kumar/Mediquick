@@ -3,25 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= products.title %> - Product Details</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <title>Blog Cards</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Our Products</h1>
-        <div class="product-list">
-            <% products.forEach(product => { %>
-                <div class="product-item">
-                    <img src="<%= product.img %>" alt="<%= product.title %>">
-                    <h2><%= product.title %></h2>
-                    <p><%= product.desc %></p>
-                    <p>$<%= product.price %></p>
-                    <a href="/products/<%= product._id %>">View Details</a>
-                </div>
-            <% }); %>
-        </div>
+    <br>
+    <!-- Search Bar -->
+    <form action="/search" method="GET" class="search-form">
+        <input type="text" name="q" placeholder="Search Equipment..." class="search-input">
+        <button type="submit" class="search-button">Search</button>
+    </form>
 
-    <footer>
-        <p>&copy; 2024 Your Company. All rights reserved.</p>
-    </footer>
+    <div class="product_container">
+        <% products.forEach(function(product) { %>
+            <a href="/product/find/<%= product._id %>">
+                <div class="product_card" data-categories="<%= product.categories.join(',') %>">
+                    <img src="/<%= product.image %>" alt="Product Image">
+                    <h2><%= product.title %></h2>
+                    <div class="category_button"><%= product.categories.join(', ') %></div>
+                    <p><%= product.description %></p>
+                    <p><%= product.use %></p>
+                </div>
+            </a>
+        <% }); %>
+    </div>
+    
+    <script src="script.js"></script>
 </body>
 </html>

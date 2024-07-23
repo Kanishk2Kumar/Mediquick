@@ -1,0 +1,26 @@
+<section id="UpdateProduct">
+    <h1>Update Product</h1>
+    <form action="/products/update/<%= product._id %>" method="PUT">
+        <div>
+            <label>Title</label>
+            <input type="text" name="title" value="<%= product.title %>" required>
+        </div>
+        <div>
+            <label>Description</label>
+            <textarea name="description" required><%= product.description %></textarea>
+        </div>
+        <div>
+            <label>Use</label>
+            <input type="text" name="use" value="<%= product.use %>">
+        </div>
+        <div>
+            <label>Image URL</label>
+            <input type="text" name="image" value="<%= product.image %>">
+        </div>
+        <div>
+            <label>Categories</label>
+            <input type="text" name="categories" value="<%= product.categories.join(', ') %>">
+        </div>
+        <button type="submit">Update Product</button>
+    </form>
+</section>

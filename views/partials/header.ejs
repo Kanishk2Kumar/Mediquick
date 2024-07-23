@@ -15,8 +15,8 @@
                 <a href="#">Medical Equipment <i class="fas fa-caret-down"></i></a>
                 <div class="dropdown-menu">
                     <ul>
-                        <li><a href="#"><i class="fas fa-truck"></i> Rental</a></li>
-                        <li><a href="#"><i class="fas fa-shopping-cart"></i> Buy</a></li>
+                        <li><a href="/product"><i class="fas fa-truck"></i> Rental</a></li>
+                        <li><a href="/product"><i class="fas fa-shopping-cart"></i> Buy</a></li>
                     </ul>
                 </div>
             </li>
@@ -25,7 +25,7 @@
                 <div class="dropdown-menu">
                     <ul>
                         <li><a href="#"><i class="fas fa-heartbeat"></i> Elder Care</a></li>
-                        <li><a href="#"><i class="fas fa-user-nurse"></i> Nursing Care</a></li>
+                        <li><a href="/NursingCare"><i class="fas fa-user-nurse"></i> Nursing Care</a></li>
                         <li><a href="/Doctor"><i class="fas fa-user-md"></i> Doctor Consultation</a></li>
                     </ul>
                 </div>
@@ -34,15 +34,15 @@
         </ul>
         <div class="profile-section">
             <% if (SignedIn) { %>
-                <a href="#" class="profile"><i class="fas fa-user-circle"></i> <%= username %> <i class="fas fa-caret-down"></i></a>
-            <% }else { %>
+                <a href="/login" class="profile"><i class="fas fa-user-circle"></i> <%= username %> <i class="fas fa-caret-down"></i></a>
+            <% } else { %>
                 <a href="/login" class="profile"><i class="fas fa-user-circle"></i> Profile <i class="fas fa-caret-down"></i></a>
             <% } %>
             <div class="dropdown-menu">
                 <ul>
-                    <li><a href="#"><i class="fas fa-edit"></i> Edit Profile</a></li>
-                    <li><a href="#"><i class="fas fa-shopping-cart"></i> View Cart</a></li>
-                    <li><a href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
+                    <li><a href="/editProfile"><i class="fas fa-edit"></i> Edit Profile</a></li>
+                    <li><a href="/cart"><i class="fas fa-shopping-cart"></i> View Cart</a></li>
+                    <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
                 </ul>
             </div>
         </div>
