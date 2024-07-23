@@ -44,9 +44,13 @@ router.get("/Doctor", (req, res) => {
 router.get("/WhatWeDo", (req, res) => {
   res.render("WhatWeDo");
 });
-// router.get("/Admin", (req, res) => {
-//   res.render("Admin");
-// });
+router.get("/Admin", (req, res) => {
+  if (IsAdmin) {
+    res.render("Admin")
+  }else{
+    res.send("You are Not Autheticated");
+  }
+});
 router.get("/Admin/AllUsers", (req, res) => {
   res.render("AllUsers");
 });
@@ -82,15 +86,15 @@ router.get("/AddProducts", (req, res) => {
   res.render("AddProducts");
 });
 
-router.get("/Products", async (req, res) => {
-  try {
-    const data = await Product.find();
-    res.render('Products', { data });
-  } catch (error) {
-    console.log(error);
-    res.status(500).send("An error occurred while fetching the data.");
-  }
-});
+// router.get("/Products", async (req, res) => {
+//   try {
+//     const data = await Product.find();
+//     res.render('Products', { data });
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).send("An error occurred while fetching the data.");
+//   }
+// });
 
 // Search
 router.get("/search", async (req, res) => {
@@ -109,6 +113,9 @@ router.get("/search", async (req, res) => {
     console.error(error);
     res.status(500).send("An error occurred while searching for posts.");
   }
+});
+router.get("/IndividualCard", (req, res) => {
+  res.render("IndividualCard");
 });
 
 // Edit Profile

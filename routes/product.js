@@ -6,21 +6,36 @@ const {
 } = require("./verifyToken");
 
 const router = require("express").Router();
-
+// Get Create Product
+router.get("/AddProduct", async (req, res) => {
+  if (IsAdmin) {
+    res.render("AddProducts");
+  }else{
+    res.status(401).json("You are not authenticated!");
+  }
+});
 //CREATE
-router.post("/", verifyTokenAndAdmin, async (req, res) => { // TESTED
+router.post("/AddProduct", verifyTokenAndAdmin, async (req, res) => { // TESTED
   const newProduct = new Product(req.body);
 
   try {
     const savedProduct = await newProduct.save();
-    res.status(200).json(savedProduct);
+    res.redirect("/");
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
 //UPDATE
-router.put("/:id", verifyTokenAndAdmin, async (req, res) => { // TESTED
+router.get("/update/:id", verifyTokenAndAdmin, async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+    res.render('UpdateProduct', { product });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+router.put("/update/:id", verifyTokenAndAdmin, async (req, res) => { // TESTED
   try {
     const updatedProduct = await Product.findByIdAndUpdate(
       req.params.id,
@@ -49,7 +64,7 @@ router.delete("/:id", verifyTokenAndAdmin, async (req, res) => { // TESTED
 router.get("/find/:id", async (req, res) => { // TESTED 
   try {
     const product = await Product.findById(req.params.id);
-    res.status(200).json(product);
+    res.render('IndividualCard', { product });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -74,7 +89,7 @@ router.get("/", async (req, res) => { // TESTED
       products = await Product.find();
     }
 
-    res.status(200).json(products);
+    res.render('Products', { products });
   } catch (err) {
     res.status(500).json(err);
   }

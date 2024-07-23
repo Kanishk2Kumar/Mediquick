@@ -72,7 +72,15 @@ app.post("/register", async (req, res) => {
 
   try {
       const savedUser = await newUser.save();
-      res.status(201).json(savedUser);
+      SignedIn = true;
+      currentUser_Id = savedUser._id.toString(); // Ensure this is a string
+      console.log(currentUser_Id);
+      await fetchUserDetails(currentUser_Id);
+      if(savedUser.isAdmin == true){
+        IsAdmin = true;
+      }
+      
+      res.redirect("/");
   } catch (err) {
       res.status(500).json(err);
   }

@@ -15,8 +15,8 @@
     </form>
 
     <div class="product_container">
-        <% data.forEach(function(product) { %>
-            <a href="/product/<%= product._id %>">
+        <% products.forEach(function(product) { %>
+            <a href="/product/find/<%= product._id %>">
                 <div class="product_card" data-categories="<%= product.categories.join(',') %>">
                     <img src="/<%= product.image %>" alt="Product Image">
                     <h2><%= product.title %></h2>
