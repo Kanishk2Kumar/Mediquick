@@ -4,23 +4,38 @@ const {
   verifyTokenAndAuthorization,
   verifyTokenAndAdmin,
 } = require("./verifyToken");
-const express = require('express');
-const router = require("express").Router();
 
+const router = require("express").Router();
+// Get Create Product
+router.get("/AddProduct", async (req, res) => {
+  if (IsAdmin) {
+    res.render("AddProducts");
+  }else{
+    res.status(401).json("You are not authenticated!");
+  }
+});
 //CREATE
-router.post("/", verifyTokenAndAdmin, async (req, res) => { // TESTED
+router.post("/AddProduct", verifyTokenAndAdmin, async (req, res) => { // TESTED
   const newProduct = new Product(req.body);
 
   try {
     const savedProduct = await newProduct.save();
-    res.status(200).json(savedProduct);
+    res.redirect("/");
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
 //UPDATE
-router.put("/:id", verifyTokenAndAdmin, async (req, res) => { // TESTED
+router.get("/update/:id", verifyTokenAndAdmin, async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+    res.render('UpdateProduct', { product });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+router.put("/update/:id", verifyTokenAndAdmin, async (req, res) => { // TESTED
   try {
     const updatedProduct = await Product.findByIdAndUpdate(
       req.params.id,
@@ -49,19 +64,34 @@ router.delete("/:id", verifyTokenAndAdmin, async (req, res) => { // TESTED
 router.get("/find/:id", async (req, res) => { // TESTED 
   try {
     const product = await Product.findById(req.params.id);
-    res.status(200).json(product);
+    res.render('IndividualCard', { product });
   } catch (err) {
     res.status(500).json(err);
   }
 });
-// Get All prdoucts
-router.get('/', async (req, res) => {
+
+//GET ALL PRODUCTS
+router.get("/", async (req, res) => { // TESTED
+  const qNew = req.query.new;
+  const qCategory = req.query.category;
   try {
-      const products = await Product.find();
-      
-      res.render('products', { products });
-  } catch (error) {
-      res.status(500).send('Server error');
+    let products;
+
+    if (qNew) {
+      products = await Product.find().sort({ createdAt: -1 }).limit(1);
+    } else if (qCategory) {
+      products = await Product.find({
+        categories: {
+          $in: [qCategory],
+        },
+      });
+    } else {
+      products = await Product.find();
+    }
+
+    res.render('Products', { products });
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 

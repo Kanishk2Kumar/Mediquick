@@ -7,6 +7,9 @@ const {
 
 const router = require("express").Router();
 
+router.get("/", (req, res) => {
+    res.render("Cart");
+})
 //CREATE
 
 router.post("/", verifyToken, async (req, res) => {
