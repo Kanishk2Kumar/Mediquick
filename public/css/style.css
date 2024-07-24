@@ -2430,3 +2430,242 @@ img {
         margin-bottom: 10px;
     }
 }
+/* Cart Abhinav */ /* Cart____________ */
+.main-wrapper {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.shopping-cart {
+    width: 70%;
+}
+
+.cart-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-items {
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--light-brown); /* Border color */
+}
+
+.item-image img {
+    width: 100px;
+}
+
+.item-details {
+    flex-grow: 1;
+    padding: 0 20px;
+}
+
+.item-price {
+    width: 100px;
+    text-align: right;
+}
+
+.item-status {
+    font-weight: bold;
+}
+
+.checkout-summary {
+    width: 25%;
+    padding: 20px;
+    border: 1px solid var(--light-brown); /* Border color */
+    height: fit-content;
+    border-radius: 5px;
+    background-color: var(--white); /* Background color for the summary */
+}
+
+.subtotal {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.checkout-btn {
+    background-color: var(--primary-color); /* Primary color */
+    border: 1px solid var(--primary-color-dark); /* Border color */
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    border-radius: 5px;
+    color: var(--white); /* Text color */
+}
+
+/* Quantity Dropdown Styling */
+.quantity-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--light-brown); /* Border color */
+    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: var(--white); /* Background color */
+    width: 80px;
+}
+
+.qty-label {
+    margin-right: 5px;
+}
+
+.item-quantity {
+    border: none;
+    background: transparent;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0 10px;
+    outline: none;
+    color: var(--text-dark); /* Text color */
+}
+
+.item-quantity::-ms-expand {
+    display: none;
+}
+
+.quantity-wrapper::after {
+    content: '▼';
+    font-size: 12px;
+    padding-left: 5px;
+    color: var(--text-dark); /* Arrow color */
+    pointer-events: none;
+}
+ /* Our Team - Harshali */
+ #OurTeamH{
+    margin: 0;
+    padding: 100px 0px;
+    height: 100%;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+h1{
+    text-align: center;
+    color: #000;
+    font-size: 45px;
+}
+.containerteam{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 40px;
+}
+.our-team{
+    background: #C8D5B7;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    margin: 0px 20px;
+    padding: 30px 70px;
+    width: 30%;
+    border-radius: 10px;
+}
+.our-team .teampic{
+    display: inline-block;
+    width: 130px;
+    height: 130px;
+    margin-bottom: 0px;
+    z-index: 1;
+    position: relative;
+}
+.our-team .teampic::before{
+    content: "";
+    width: 100%;
+    height: 0;
+    border-radius: 50%;
+    background: #296564;
+    position: absolute;
+    bottom: 135%;
+    right: 0;
+    left: 0;
+    opacity: 0.2;
+    transform: scale(3);
+    transition: all 0.3s linear 0s;
+}
+.our-team:hover .teampic::before{
+    height: 100%;
+}
+.our-team .teampic::after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #296564;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}.our-team .teampic img{
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    transform: scale(1);
+    transition: all 0.9s ease 0s;
+}
+.our-team:hover .teampic img{
+    box-shadow: 0 0 0 14px #C8D5B7;
+    transform: scale(0.7);
+}
+.our-team .tea-content{
+    margin-bottom: 30px;
+}
+.our-team .teamtitle{
+    font-size: 18px;
+    font-weight: 700;
+    color: #4e5052;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+.our-team .teamsocial{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background: #296564;
+    position: absolute;
+    bottom: -100px;
+    left: 0;
+    transform: all 0.5s ease 0s;
+}
+.our-team:hover .teamsocial{
+    bottom: 0;
+}
+.our-team .teamsocial li{
+    display: inline-block;
+}
+.our-team .teamsocial li a{
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    font-size: 17px;
+    color: #fff;
+    transition: all 0.3s ease 0s;
+}
+.our-team .teamsocial li a:hover{
+    color: #296564;
+    background: #f7f5ec;
+}
+@media (max-width: 720px){
+    .containerteam{
+        flex-direction: column;
+    }
+    .our-team{
+        width: 80%;
+        margin-top: 30px;
+    }
+}
+.NoStyleHeader{
+    background-color: transparent;
+}

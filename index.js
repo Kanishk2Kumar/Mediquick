@@ -21,6 +21,7 @@ global.SignedIn = false;
 global.currentUser_Id = null;
 global.username = null;
 global.IsAdmin = false;
+global.AccessTokenC = null;
 
 mongoose
   .connect(process.env.MONGO_URL)
@@ -116,6 +117,8 @@ app.post("/login", async (req, res) => {
       SignedIn = true;
       currentUser_Id = user._id.toString(); // Ensure this is a string
       console.log(currentUser_Id);
+      console.log(accessToken);
+      AccessTokenC = accessToken;
       await fetchUserDetails(currentUser_Id);
       if(user.isAdmin == true){
         IsAdmin = true;

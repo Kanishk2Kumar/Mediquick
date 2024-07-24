@@ -10,16 +10,47 @@
                 </div>
             </div>
             <div class="product-div-right">
-                <span class="product-name">Product name</span>
-                <p class="product-description">Product Description: Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae animi ad minima veritatis dolore. Architecto facere dignissimos voluptate fugit ratione molestias quis quidem exercitationem voluptas.</p>
-                <p class="usage-description">Usage Description: Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae animi ad minima veritatis dolore. Architecto facere dignissimos voluptate fugit ratione molestias quis quidem exercitationem voluptas.</p>
-                <span class="product-price">Rs. 1000</span>
-                <span class="product-stock">In Stock</span>
+                <span class="product-name"><%= product.title %></span>
+                <p class="product-description"><%= product.description %></p>
+                <p class="usage-description"><%= product.description %></p>
+                <span class="product-price"><%= product.use %></span>
+                <span class="product-stock"><%= product.inStock %></span>
                 <div class="btn-groups">
-                    <button type="button" class="add-cart-btn"><i class="fas fa-shopping-cart"></i>add to cart</button>
+                    <button type="button" id="add-to-cart-btn" class="add-cart-btn"><i class="fas fa-shopping-cart"></i>add to cart</button>
                     <button type="button" class="buy-now-btn"><i class="fas fa-wallet"></i>buy now</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById('add-to-cart-btn').addEventListener('click', async () => {
+        const product = {
+            image: '<%= product.image %>',
+            title: '<%= product.title %>',
+            description: '<%= product.description %>',
+            use: '<%= product.use %>',
+            inStock: '<%= product.inStock %>'
+        };
+
+        try {
+            const response = await fetch('/cart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('token') // Assuming token is stored in localStorage
+                },
+                body: JSON.stringify(product)
+            });
+
+                const savedCart = await response.json();
+                console.log('Product added to cart:', savedCart);
+                alert('Product added to cart!');
+                throw new Error('Failed to add product to cart');
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error adding product to cart');
+        }
+    });
+</script>

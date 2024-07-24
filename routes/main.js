@@ -96,6 +96,16 @@ router.get("/AddProducts", (req, res) => {
 //   }
 // });
 
+// EDit Products 
+router.get("/EditProducts", (req, res) => {
+  res.render("EditProducts");
+});
+
+// Graphs
+router.get("/Revenue", (req, res) => {
+  res.render("Revenue");
+}); 
+
 // Search
 router.get("/search", async (req, res) => {
   try {
@@ -138,5 +148,8 @@ router.get("/logout", (req, res) => {
 
     res.redirect("/login");
   });
+});
+router.get("/OurTeam", (req, res) => {
+  res.render("OurTeam");
 });
 module.exports = router;
