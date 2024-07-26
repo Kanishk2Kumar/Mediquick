@@ -10,6 +10,15 @@ const UserSchema = new mongoose.Schema(
       default: false,
     },
     // Add Image -> img: { type: String },
+    Diagonsis: {
+      type: String,
+      required: false
+    },
+    dateOfBirth: { type: Date, required: true }, // Added dateOfBirth field
+    address: {
+      type: String,
+      required: false
+    },
   },
   { timestamps: true }
 );

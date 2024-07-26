@@ -6,6 +6,14 @@ const {
 } = require("./verifyToken");
 
 const router = require("express").Router();
+router.get("/EditProducts", async (req, res) => {
+  if (IsAdmin) {
+  const products = await Product.find();
+  res.render("EditProducts", { products });
+}else{
+  res.status(401).json("You are not authenticated!");
+  }
+});
 // Get Create Product
 router.get("/AddProduct", async (req, res) => {
   if (IsAdmin) {

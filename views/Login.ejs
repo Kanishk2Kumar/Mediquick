@@ -220,9 +220,9 @@
                 0 10px 10px rgba(0, 0, 0, 0.22);
             position: relative;
             overflow: hidden;
-            width: 768px;
+            width: 968px;
             max-width: 100%;
-            min-height: 480px;
+            min-height: 680px;
         }
 
         .form-container {
@@ -370,12 +370,21 @@
                     <label for="password">Password</label>
                     <input type="password" required name="password" placeholder="Password">
                 </div>
+                <div class="input-group">
+                    <label for="dateOfBirth">Date of Birth</label>
+                    <input type="date" required name="dateOfBirth" placeholder="Date of Birth">
+                </div>
+                <div class="input-group">
+                    <label for="address">Address</label>
+                    <input type="text" required name="address" placeholder="Address">
+                </div>
                 <button type="submit" class="btn">Sign Up</button>
                 <div class="sign-link">
                     <p>Already have an account? <a href="/login" class="signIn-link" id="fixed_login_body">Sign In</a></p>
                 </div>
             </form>
         </div>
+        
         <div class="form-container sign-in-container">
             <form action="/login" method="POST">
                 <h1>Sign in</h1>

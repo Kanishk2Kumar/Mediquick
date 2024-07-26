@@ -69,6 +69,8 @@ app.post("/register", async (req, res) => {
           req.body.password,
           process.env.PASS_SEC
       ).toString(),
+      dateOfBirth: req.body.dateOfBirth,
+      address: req.body.address
   });
 
   try {

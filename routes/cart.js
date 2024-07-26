@@ -7,41 +7,56 @@ const {
 
 const router = require("express").Router();
 
-router.get("/", (req, res) => {
-    res.render("Cart");
-})
+router.get("/", async (req, res) => {
+    try {
+        const cart = await Cart.findOne({ userId: currentUser_Id }).populate('products.productId');
+        res.render("Cart", { cart });
+    } catch (err) {
+        console.error("Error fetching cart:", err);
+        res.status(500).send("Internal Server Error");
+    }
+});
 // CREATE
 router.post("/", async (req, res) => {
-    const { userId, productId, quantity } = req.body;
-    console.log("Received request with:", req.body);
+    if (SignedIn) {
+        const { userId, productId, quantity } = req.body;
+        console.log("Received request with:", req.body);
 
-    try {
-        let cart = await Cart.findOne({ userId });
-        if (cart) {
-            // If cart exists, update the quantity of the product if it already exists in the cart
-            let productIndex = cart.products.findIndex(p => p.productId === productId);
-            if (productIndex > -1) {
-                let productItem = cart.products[productIndex];
-                productItem.quantity += parseInt(quantity);
-                cart.products[productIndex] = productItem;
+        try {
+            let cart = await Cart.findOne({ userId });
+            if (cart) {
+                // If cart exists, update the quantity of the product if it already exists in the cart
+                let productIndex = cart.products.findIndex(p => p.productId === productId);
+                if (productIndex > -1) {
+                    let productItem = cart.products[productIndex];
+                    productItem.quantity += parseInt(quantity);
+                    cart.products[productIndex] = productItem;
+                } else {
+                    // If product does not exist in cart, add it
+                    cart.products.push({ productId, quantity });
+                }
+                cart = await cart.save();
+                res.redirect("/");
             } else {
-                // If product does not exist in cart, add it
-                cart.products.push({ productId, quantity });
+                // If no cart exists for the user, create a new one
+                const newCart = new Cart({
+                    userId,
+                    products: [{ productId, quantity }]
+                });
+                const savedCart = await newCart.save();
+                res.redirect("/");
             }
-            cart = await cart.save();
-            res.status(200).json(cart);
-        } else {
-            // If no cart exists for the user, create a new one
-            const newCart = new Cart({
-                userId,
-                products: [{ productId, quantity }]
-            });
-            const savedCart = await newCart.save();
-            res.status(200).json(savedCart);
+        } catch (err) {
+            console.error("Error saving cart:", err); // Log the error for debugging
+            res.status(500).json({ message: "Failed to save cart", error: err });
         }
-    } catch (err) {
-        console.error("Error saving cart:", err); // Log the error for debugging
-        res.status(500).json({ message: "Failed to save cart", error: err });
+    } else {
+        res.send(`
+            <script>
+                alert("You must be signed in to add items to your cart.");
+                window.location.href = "/login"; // Redirect to login page
+            </script>
+        `);
     }
 });
 

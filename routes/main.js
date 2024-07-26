@@ -96,11 +96,6 @@ router.get("/AddProducts", (req, res) => {
 //   }
 // });
 
-// EDit Products 
-router.get("/EditProducts", (req, res) => {
-  res.render("EditProducts");
-});
-
 // Graphs
 router.get("/Revenue", (req, res) => {
   res.render("Revenue");
@@ -127,6 +122,10 @@ router.get("/search", async (req, res) => {
 router.get("/IndividualCard", (req, res) => {
   res.render("IndividualCard");
 });
+// Profile
+router.get("/Profile", (req, res) => {
+  res.render("Profile");
+});
 
 // Edit Profile
 router.get("/editProfile", (req, res) => {
@@ -137,18 +136,14 @@ router.post("/editProfile", async (req, res) => {
   // Add your code for editing the profile
 });
 router.get("/logout", (req, res) => {
-  req.session.destroy((err) => {
-    if (err) {
-      return res.status(500).json("Error logging out!");
-    }
 
     global.SignedIn = false;
     global.currentUser_Id = null;
     global.username = null;
 
-    res.redirect("/login");
+    res.redirect("/");
   });
-});
+
 router.get("/OurTeam", (req, res) => {
   res.render("OurTeam");
 });
