@@ -2,16 +2,12 @@ const mongoose = require("mongoose");
 
 const OrderSchema = new mongoose.Schema(
   {
-    userId: { type: String, required: true },
+    username: { type: String, required: true, unique: true },
     products: [
       {
-        productId: {
-          type: String,
-        },
-        quantity: {
-          type: Number,
-          default: 1,
-        },
+        productId: { type: String },
+        quantity: { type: Number, default: 1 },
+        category: { type: String }  // Added category field
       },
     ],
     amount: { type: Number, required: true },
