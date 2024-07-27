@@ -1,0 +1,81 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Gallery</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <div class="unique-search-container">
+        <input type="text" class="unique-search-bar" placeholder="Search Product to Edit..." id="uniqueSearchInput">
+        <a href="/AddProducts">
+            <button class="unique-add-option">+ Add New Products</button>
+        </a>
+    </div>
+    
+
+    <div class="gallery">
+        <div class="product_content">
+            <img src="https://img.freepik.com/free-vector/modern-watch_23-2147517339.jpg?w=740&t=st=1711248726~exp=1711249326~hmac=f9db2cbca8b8f57b2110ace4dadaff2851d93b2a1abcd3cd3d25cfa5dcd95870" alt="smartwatch">
+            <h3>Watch</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae debitis inventore, libero quam asperiores.</p>
+            <div class="actions">
+                <button class="edit">Edit</button>
+                <button class="delete">Delete</button>
+            </div>
+        </div>
+    
+        <div class="product_content">
+            <img src="https://img.freepik.com/free-vector/headphones-wireless-realistic-composition-with-isolated-image-phones-with-power-bank-dock-station-with-reflections-vector-illustration_1284-73201.jpg?w=740&t=st=1711249412~exp=1711250012~hmac=880c4f7abbb4730c9e06dfbdcc1e673616faf2dbe6926ed2f80fed3ee37429ec" alt="earphone">
+            <h3>Earphone</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae debitis inventore, libero quam asperiores.</p>
+            <div class="actions">
+                <button class="edit">Edit</button>
+                <button class="delete">Delete</button>
+            </div>
+        </div>
+    
+        <div class="product_content">
+            <img src="https://img.freepik.com/free-photo/elegant-smartphone-composition_23-2149437106.jpg?t=st=1711249760~exp=1711253360~hmac=62de81f0d62c3e9b18ed95609e37bcbe35cdd1980c9856ecb4b92dd8237e51a4&w=360" alt="smartphone">
+            <h3>Smartphone</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae debitis inventore, libero quam asperiores.</p>
+            <div class="actions">
+                <button class="edit">Edit</button>
+                <button class="delete">Delete</button>
+            </div>
+        </div>
+    
+        <div class="product_content">
+            <img src="https://img.freepik.com/free-photo/levitating-music-headphones-display_23-2149817602.jpg?w=740&t=st=1711249913~exp=1711250513~hmac=1fee06f471ad5b22e98655a5bdee4312286034d3f76703e650b0c5be2ba63b98" alt="headphone">
+            <h3>Headphone</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae debitis inventore, libero quam asperiores.</p>
+            <div class="actions">
+                <button class="edit">Edit</button>
+                <button class="delete">Delete</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('uniqueSearchInput').addEventListener('input', function() {
+    const query = this.value.toLowerCase();
+    const products = document.querySelectorAll('.unique-product-content');
+
+    products.forEach(product => {
+        const title = product.querySelector('h3').textContent.toLowerCase();
+        const description = product.querySelector('p').textContent.toLowerCase();
+        if (title.includes(query) || description.includes(query)) {
+            product.style.display = 'block';
+        } else {
+            product.style.display = 'none';
+        }
+    });
+});
+
+    </script>
+</body>
+
+</html> -->

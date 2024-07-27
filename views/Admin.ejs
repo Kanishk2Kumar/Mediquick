@@ -1,113 +1,388 @@
-<!-- overlay -->
-<div id="sidebar-overlay" class="overlay w-100 vh-100 position-fixed d-none"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical E-Commerce Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #005A5B; /* Medical green */
+            --primary-color-dark: #003D3D;
+            --text-dark: #2C2C2C;
+            --white: #F8F9F9;
+            --light-gray: #E0E0E0;
+            --bg-gray: #F2F2F2;
+        }
 
-<!-- sidebar -->
-<div class="col-md-3 col-lg-2 px-0 position-fixed h-100 bg-white shadow-sm sidebar" id="sidebar">
-  <h1 class="bi bi-bootstrap text-primary d-flex my-4 justify-content-center"></h1>
-  <div class="list-group rounded-0">
-      <a href="/admin" class="list-group-item list-group-item-action active border-0 d-flex align-items-center">
-          <span class="bi bi-border-all"></span>
-          <span class="ml-2">Dashboard</span>
-      </a>
-      <a href="/product/AddProduct" class="list-group-item list-group-item-action border-0 align-items-center">
-          <span class="bi bi-box"></span>
-          <span class="ml-2">Add Products</span>
-      </a>
-      <a href="/admin/AllUsers" class="list-group-item list-group-item-action border-0 align-items-center">
-          <span class="bi bi-box"></span>
-          <span class="ml-2">All Users</span>
-      </a>
-      <a href="/admin/RevenueGenrated" class="list-group-item list-group-item-action border-0 align-items-center">
-          <span class="bi bi-box"></span>
-          <span class="ml-2">Revenue Genrated</span>
-      </a>
-  </div>
-</div>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            background-color: var(--bg-gray);
+        }
 
-<div class="col-md-9 col-lg-10 ml-md-auto px-0 ms-md-auto">
-  <!-- top nav -->
-  <nav class="w-100 d-flex px-4 py-2 mb-4 shadow-sm">
-    <!-- close sidebar -->
-    <button class="btn py-0 d-lg-none" id="open-sidebar">
-      <span class="bi bi-list text-primary h3"></span>
-    </button>
-    <div class="dropdown ml-auto">
-      <button class="btn py-0 d-flex align-items-center" id="logout-dropdown" data-toggle="dropdown" aria-expanded="false">
-        <span class="bi bi-person text-primary h4"></span>
-        <span class="bi bi-chevron-down ml-1 mb-2 small"></span>
-      </button>
-      <div class="dropdown-menu dropdown-menu-right border-0 shadow-sm" aria-labelledby="logout-dropdown">
-        <a class="dropdown-item" href="#">Logout</a>
-        <a class="dropdown-item" href="#">Settings</a>
-      </div>
-    </div>
-  </nav>
+        .admin-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
 
-  <!-- main content -->
-  <main class="p-4 min-vh-100">
-    <section class="row">
-      <div class="col-md-6 col-lg-4">
-        <!-- card -->
-        <article class="p-5 rounded shadow-sm border-left mb-4">
-          <a href="#" class="d-flex align-items-center">
-            <span class="bi bi-box h4"></span>
-            <h4 class="ml-3">Add Products</h4>
-          </a>
-        </article>
-      </div>
-      <div class="col-md-6 col-lg-4">
-        <article class="p-5 rounded shadow-sm border-left mb-4">
-          <a href="#" class="d-flex align-items-center">
-            <span class="bi bi-person h4"></span>
-            <h4 class="ml-3">All Users</h4>
-          </a>
-        </article>
-      </div>
-      <div class="col-md-6 col-lg-4">
-        <article class="p-5 rounded shadow-sm border-left mb-4">
-          <a href="#" class="d-flex align-items-center">
-            <span class="bi bi-person-check h4"></span>
-            <h4 class="ml-3">Revenue Genrated</h4>
-          </a>
-        </article>
-      </div>
-    </section>
+        .admin-nav {
+            width: 250px;
+            background-color: var(--white);
+            border-right: 1px solid var(--light-gray);
+            padding: 20px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
 
-    <div class="jumbotron jumbotron-fluid rounded bg-white border-0 shadow-sm border-left px-5">
-      <div class="container">
-        <h1 class="display-4 mb-3 text-primary">Recent Users</h1> 
+        .admin-nav h1 {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
 
-        <div class="my-4 p-4 bg-body rounded shadow-sm">
-          <div class="d-flex text-body-secondary pt-4">
-            <svg class="bd-placeholder-img flex-shrink-0 me-3 rounded" width="40" height="40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 40x40" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"></rect><text x="50%" y="50%" fill="#007bff" dy=".3em">40x40</text></svg>
-            <p class="pb-4 mb-0 large lh-sm border-bottom">
-              <strong class="d-block text-gray-dark user_card">@username</strong>
-              <strong class="d-block text-gray-dark">Password : </strong>Encrypted Password
-            </p>
-          </div>
-          <div class="d-flex text-body-secondary pt-4">
-            <svg class="bd-placeholder-img flex-shrink-0 me-3 rounded" width="40" height="40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 40x40" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#e83e8c"></rect><text x="50%" y="50%" fill="#e83e8c" dy=".3em">40x40</text></svg>
-            <p class="pb-4 mb-0 large lh-sm border-bottom">
-              <strong class="d-block text-gray-dark">@username</strong>
-              <strong class="d-block text-gray-dark">Password : </strong>Encrypted Password
-            </p>
-          </div>
-          <div class="d-flex text-body-secondary pt-4">
-            <svg class="bd-placeholder-img flex-shrink-0 me-3 rounded" width="40" height="40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 40x40" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#6f42c1"></rect><text x="50%" y="50%" fill="#6f42c1" dy=".3em">40x40</text></svg>
-            <p class="pb-4 mb-0 large lh-sm border-bottom">
-              <strong class="d-block text-gray-dark">@username</strong>
-              <strong class="d-block text-gray-dark">Password : </strong>Encrypted Password
-            </p>
-          </div>
-          <small class="d-block text-end mt-4">
-            <a href="#">All Users</a>
-          </small>
+        .admin-nav h1 i {
+            margin-right: 10px;
+        }
+
+        .admin-nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .admin-nav li {
+            margin: 15px 0;
+        }
+
+        .admin-nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .admin-nav a i {
+            margin-right: 10px;
+        }
+
+        .admin-nav a:hover {
+            background-color: var(--primary-color-dark);
+            color: var(--white);
+        }
+
+        .admin-content {
+            flex: 1;
+            padding: 20px;
+            background-color: var(--white);
+            overflow-y: auto;
+        }
+
+        .admin-content h2 {
+            font-size: 22px;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin: 0 0 20px;
+        }
+
+        .admin-content section {
+            display: none;
+        }
+
+        .admin-content section.active {
+            display: block;
+        }
+
+        .card {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+        }
+
+        .card h3 i {
+            margin-right: 10px;
+        }
+
+        .card .statistics {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .card .statistics div {
+            flex: 1;
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        .card .statistics div h4 {
+            margin: 0 0 10px;
+            color: var(--primary-color);
+        }
+
+        .card table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .card table, .card th, .card td {
+            border: 1px solid var(--light-gray);
+        }
+
+        .card th, .card td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        .card th {
+            background-color: var(--light-gray);
+        }
+        .chart-container {
+    margin-top: 20px;
+    position: relative;
+    height: 400px;
+}
+
+
+        /* Add media query for responsive design */
+        @media (max-width: 768px) {
+            .admin-nav {
+                width: 100%;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid var(--light-gray);
+            }
+
+            .admin-nav ul {
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+
+            .admin-nav a {
+                flex: 1;
+                text-align: center;
+            }
+
+            .admin-content {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <nav class="admin-nav">
+            <h1><i class="fas fa-medkit"></i>Admin Dashboard</h1>
+            <ul>
+                <li><a href="#manage-products"><i class="fas fa-box"></i>Manage Products</a></li>
+                <li><a href="#orders"><i class="fas fa-shopping-cart"></i>Orders</a></li>
+                <li><a href="#customers"><i class="fas fa-users"></i>Customers</a></li>
+                <li><a href="#sales"><i class="fas fa-chart-line"></i>Sales</a></li>
+            </ul>
+        </nav>
+        <div class="admin-content">
+            <section id="manage-products" class="active">
+                <h2><i class="fas fa-box"></i>Manage Products</h2>
+                <div class="card">
+                    <h3><i class="fas fa-list"></i>Product List</h3>
+                    <p>List of products will be here.</p>
+                </div>
+            </section>
+            <section id="orders">
+              <h2><i class="fas fa-shopping-cart"></i> Orders</h2>
+              <div class="card">
+                  <h3><i class="fas fa-list"></i> Order List</h3>
+                  <div class="table-container">
+                      <table>
+                          <thead>
+                              <tr>
+                                  <th>User Name</th>
+                                  <th>Amount</th>
+                                  <th>Categories</th>
+                                  <th>Date</th>
+                              </tr>
+                          </thead>
+                          <tbody id="orders-table">
+                              <!-- Rows will be populated by JavaScript -->
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </section>
+          
+          
+            <section id="customers">
+              <h2><i class="fas fa-users"></i> Customers</h2>
+              <div class="card">
+                  <h3><i class="fas fa-list"></i> Customer List</h3>
+                  <div class="table-container">
+                      <table>
+                          <thead>
+                              <tr>
+                                  <th>Sr. No.</th>
+                                  <th>Name</th>
+                                  <th>Email</th>
+                              </tr>
+                          </thead>
+                          <tbody id="customers-table">
+                              <!-- Rows will be populated by JavaScript -->
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </section>
+          
+          <section id="sales">
+            <h2><i class="fas fa-chart-line"></i> Sales</h2>
+            <div class="card">
+                <h3><i class="fas fa-chart-bar"></i> Sales Overview</h3>
+                <div class="statistics">
+                    <div>
+                        <h4>Total Sales</h4>
+                        <p id="total-sales">$0.00</p>
+                    </div>
+                    <div>
+                        <h4>Total Orders</h4>
+                        <p id="total-orders">0</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-tags"></i> Category-wise Sales</h3>
+                <div class="chart-container">
+                    <canvas id="category-sales-chart"></canvas>
+                </div>
+            </div>
+        </section>
+        
         </div>
-      </div>
     </div>
-    <div class="jumbotron jumbotron-fluid rounded bg-white border-0 shadow-sm border-left px-5">
-      <h1 class="display-4 mb-3 text-primary">Revenue Genrated</h1> 
-      <div class="Power-Bi">Integrate with Power Bi</div>
-    </div>
-  </main>
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    document.querySelectorAll('.admin-nav a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            document.querySelectorAll('.admin-content section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(targetId).classList.add('active');
+        });
+    });
+
+    // Show the first section by default
+    document.querySelector('.admin-nav a').click();
+
+    // Fetch and display customer data
+    fetch('/api/users')
+        .then(response => response.json())
+        .then(data => {
+            const tableBody = document.getElementById('customers-table');
+            tableBody.innerHTML = '';
+            data.forEach((user, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${user.username}</td>
+                    <td>${user.email}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        })
+        .catch(error => console.error('Error fetching customer data:', error));
+
+    // Fetch and display order data
+    fetch('/api/orders')
+        .then(response => response.json())
+        .then(data => {
+            const tableBody = document.getElementById('orders-table');
+            tableBody.innerHTML = ''; // Clear the table body before adding new rows
+
+            let totalSales = 0;
+            let totalOrders = 0;
+            const productCounts = {};
+
+            data.forEach(order => {
+                // Aggregate categories from the products array
+                const categories = order.products.map(product => product.category).join(', ');
+
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${order.username}</td>
+                    <td>₹${order.amount.toFixed(2)}</td> <!-- Changed $ to ₹ for INR -->
+                    <td>${categories}</td> <!-- Show categories -->
+                    <td>${new Date(order.createdAt).toLocaleDateString()}</td>
+                `;
+                tableBody.appendChild(row);
+
+                totalSales += order.amount;
+                totalOrders++;
+
+                order.products.forEach(product => {
+                    if (!productCounts[product.category]) {
+                        productCounts[product.category] = 0;
+                    }
+                    productCounts[product.category] += product.quantity;
+                });
+            });
+
+            // Update sales overview
+            document.getElementById('total-sales').textContent = `₹${totalSales.toFixed(2)}`;
+            document.getElementById('total-orders').textContent = totalOrders;
+
+            // Update category-wise sales chart
+            const categories = Object.keys(productCounts);
+            const salesData = Object.values(productCounts);
+
+            const ctx = document.getElementById('category-sales-chart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: categories,
+                    datasets: [{
+                        label: 'Sales by Category',
+                        data: salesData,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            beginAtZero: true
+                        },
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        })
+        .catch(error => console.error('Error fetching order data:', error));
+</script>

@@ -54,6 +54,10 @@ router.get("/Admin", (req, res) => {
 router.get("/Admin/AllUsers", (req, res) => {
   res.render("AllUsers");
 });
+
+router.get("/profile", (req, res) => {
+  res.render("profile");
+});
 // Add Products
 router.post("/AddProducts", upload.single('image'), async (req, res) => {
   try {
@@ -96,27 +100,35 @@ router.get("/AddProducts", (req, res) => {
 //   }
 // });
 
+// EDit Products 
+router.get("/EditProducts", (req, res) => {
+  res.render("EditProducts");
+});
+
+// Graphs
+router.get("/Revenue", (req, res) => {
+  res.render("Revenue");
+}); 
+
 // Search
 router.get("/search", async (req, res) => {
   try {
     const searchQuery = req.query.q.toLowerCase().trim();
-    const posts = await Product.find({
+    const products = await Product.find({
       $or: [
         { title: { $regex: searchQuery, $options: 'i' } },
-        { content: { $regex: searchQuery, $options: 'i' } },
+        { description: { $regex: searchQuery, $options: 'i' } },
         { categories: { $regex: searchQuery, $options: 'i' } }
       ]
     }).exec();
 
-    res.render('Products', { data: posts });
+    res.render('Products', { products });
   } catch (error) {
     console.error(error);
-    res.status(500).send("An error occurred while searching for posts.");
+    res.status(500).send("An error occurred while searching for products.");
   }
 });
-router.get("/IndividualCard", (req, res) => {
-  res.render("IndividualCard");
-});
+
 
 // Edit Profile
 router.get("/editProfile", (req, res) => {

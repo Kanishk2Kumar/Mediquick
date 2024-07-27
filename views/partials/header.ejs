@@ -1,3 +1,23 @@
+<style>
+    /* Hide the Google Translate bar */
+    body > .skiptranslate {
+        display: none !important;
+        padding: none;
+    }
+
+    /* Hide the translate bar frame */
+    iframe#google_translate_element2 {
+        display: none !important;
+    }
+    .translate-option {
+            display: flex;
+            align-items: center;
+        }
+
+        .translate-option i {
+            margin-right: 5px;
+        }
+</style>
 <div class="Header2">
     <div class="menu-bar">
         <h1 class="logo"><img src="images/Logo.png" height="100px"></h1>
@@ -43,9 +63,22 @@
                     <li><a href="/editProfile"><i class="fas fa-edit"></i> Edit Profile</a></li>
                     <li><a href="/cart"><i class="fas fa-shopping-cart"></i> View Cart</a></li>
                     <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
+                    <li><a href="#" class="translate-option"><i class="fas fa-globe"></i> Translate<div id="google_translate_element"></div></a></li>
                 </ul>
             </div>
         </div>
+        
         <div class="menu-toggle"><i class="fas fa-bars"></i></div>
     </div>
 </div>
+<script src="script.js"></script>
+      <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {pageLanguage: 'en'},
+                'google_translate_element'
+            );
+        } 
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
