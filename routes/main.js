@@ -126,15 +126,21 @@ router.get("/IndividualCard", (req, res) => {
 router.get("/Profile", (req, res) => {
   res.render("Profile");
 });
-
 // Edit Profile
-router.get("/editProfile", (req, res) => {
-  res.render("editProfile");
+router.get("/editProfile/:id", async (req, res) => {
+  if (SignedIn) {
+    try {
+      const user = await User.findById(req.params.id);
+      console.log("Edit Profile Main: "+ user);
+      res.render("editProfile", { user });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  } else{
+    res.redirect("/login");
+  }
 });
 
-router.post("/editProfile", async (req, res) => {
-  // Add your code for editing the profile
-});
 router.get("/logout", (req, res) => {
 
     global.SignedIn = false;
