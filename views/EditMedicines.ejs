@@ -1,0 +1,39 @@
+<body>
+    <div class="search-container">
+        <input type="text" class="search-bar" placeholder="Search Medicine to Edit..." id="searchInput">
+        <a href="/medicines/AddMedicine">
+            <button class="add-option">+ Add New Medicine</button>
+        </a>
+    </div>
+
+    <div class="gallery">
+        <% Medicines.forEach(function(medicine) { %>
+            <div class="product_content" data-categories="<%= medicine.categories.join(',') %>">
+                <img src="/<%= medicine.image %>" alt="Medicine Image">
+                <h2><%= medicine.title %></h2>
+                <p><%= medicine.description %></p>
+                <div class="actions">
+                    <button class="edit">Edit</button>
+                    <button class="delete">Delete</button>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+
+    <script>
+        document.getElementById('searchInput').addEventListener('input', function () {
+            const query = this.value.toLowerCase();
+            const products = document.querySelectorAll('.product_content');
+
+            products.forEach(product => {
+                const title = product.querySelector('h2').textContent.toLowerCase();
+                const description = product.querySelector('p').textContent.toLowerCase();
+                if (title.includes(query) || description.includes(query)) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>

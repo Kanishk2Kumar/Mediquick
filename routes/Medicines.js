@@ -17,13 +17,14 @@ router.get("/EditMedicines", async (req, res) => {
 // Get Create Medicine
 router.get("/AddMedicine", async (req, res) => {
   if (IsAdmin) {
-    res.render("AddMedicines");
+    res.render("AddMedicine");
   }else{
     res.status(401).json("You are not authenticated!");
   }
 });
 //CREATE
-router.post("/AddMedicine", verifyTokenAndAdmin, async (req, res) => { // TESTED
+router.post("/AddMedicine", async (req, res) => { // TESTED
+  console.log(req.body);
   const newMedicine = new Medicine(req.body);
 
   try {

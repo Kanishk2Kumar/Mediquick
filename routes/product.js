@@ -23,7 +23,8 @@ router.get("/AddProduct", async (req, res) => {
   }
 });
 //CREATE
-router.post("/AddProduct", verifyTokenAndAdmin, async (req, res) => { // TESTED
+router.post("/AddProduct", async (req, res) => { // TESTED
+  console.log(req.body)
   const newProduct = new Product(req.body);
 
   try {

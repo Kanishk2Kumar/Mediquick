@@ -116,3 +116,97 @@ function prevSlide() {
 }
 
 updateSlider();
+
+//MAp
+let map, marker, searchControl;
+
+function initMap(latitude, longitude) {
+  map = new MapmyIndia.Map("map", {
+    center: [latitude, longitude],
+    zoomControl: true,
+    hybrid: true,
+    search: false,
+    zoom: 15
+  });
+
+  marker = new L.marker([latitude, longitude], { draggable: true }).addTo(map);
+
+  marker.on('dragend', function (e) {
+    const latLng = marker.getLatLng();
+    getReverseGeocoding(latLng.lat, latLng.lng);
+  });
+
+  getReverseGeocoding(latitude, longitude);
+
+  // Add click event to the map to place marker and get address
+  map.on('click', function (e) {
+    const latLng = e.latlng;
+    marker.setLatLng(latLng);
+    getReverseGeocoding(latLng.lat, latLng.lng);
+  });
+
+  // Add search control
+  searchControl = new MapmyIndia.search({
+    key: "f73ea4da5dee0d63409da7100fbe3251",
+    map: map,
+    callback: function (data) {
+      if (data && data.length > 0) {
+        const latLng = data[0].latlng;
+        map.setView(new L.LatLng(latLng[0], latLng[1]), 15);
+        marker.setLatLng([latLng[0], latLng[1]]);
+        getReverseGeocoding(latLng[0], latLng[1]);
+      }
+    }
+  });
+  map.addControl(searchControl);
+}
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(position => {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      initMap(latitude, longitude);
+    }, showError);
+  } else {
+    alert("Geolocation is not supported by this browser.");
+  }
+}
+
+function getReverseGeocoding(latitude, longitude) {
+  const apiKey = 'f73ea4da5dee0d63409da7100fbe3251';
+  const url = `https://apis.mapmyindia.com/advancedmaps/v1/${apiKey}/rev_geocode?lat=${latitude}&lng=${longitude}`;
+
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      if (data.results && data.results[0]) {
+        const location = data.results[0];
+        const address = `${location.area}, ${location.city}, ${location.state}, ${location.country}`;
+        document.getElementById('address').value = address;
+      } else {
+        alert('Unable to retrieve location details.');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('Error retrieving location details.');
+    });
+}
+
+function showError(error) {
+  switch (error.code) {
+    case error.PERMISSION_DENIED:
+      alert("User denied the request for Geolocation.");
+      break;
+    case error.POSITION_UNAVAILABLE:
+      alert("Location information is unavailable.");
+      break;
+    case error.TIMEOUT:
+      alert("The request to get user location timed out.");
+      break;
+    case error.UNKNOWN_ERROR:
+      alert("An unknown error occurred.");
+      break;
+  }
+}

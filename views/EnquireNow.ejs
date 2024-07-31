@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enquiry Form</title>
-    <link rel="stylesheet" href="enquire.css">
-</head>
 <body>
 <div class="enquiry">
     <div class="container3">
@@ -31,7 +23,7 @@
             <form id="enquiry-form" class="form-content active">
                 <div class="form-group">
                     <label for="enquiry-type">Enquiry Type</label>
-                    <select id="enquiry-type">
+                    <select id="enquiry-type" name ="enquiry_type">
                         <option value="">- Select -</option>
                         <option value="nursing-care">Nursing Care</option>
                         <option value="elder-care">Elder Care</option>
@@ -41,19 +33,19 @@
                 </div>
                 <div class="form-group">
                     <label for="email">Email ID</label>
-                    <input type="email" id="email" placeholder="Email ID">
+                    <input type="email" id="email" name="email" placeholder="Email ID">
                 </div>
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" id="name" placeholder="Enter Name">
+                    <input type="text" id="name" name="name" placeholder="Enter Name">
                 </div>
                 <div class="form-group">
                     <label for="mobile">Mobile No.</label>
-                    <input type="text" id="mobile" placeholder="Enter Mobile No.">
+                    <input type="text" id="mobile" name="mobile" placeholder="Enter Mobile No.">
                 </div>
                 <div class="form-group">
                     <label for="time">Preferred Time To Call</label>
-                    <select id="time">
+                    <select id="time" name="preferred_time">
                         <option value="">- Select -</option>
                         <option value="08:00-09:00">08:00 AM - 09:00 AM</option>
                         <option value="09:00-10:00">09:00 AM - 10:00 AM</option>
@@ -71,7 +63,7 @@
                 </div>
                 <div class="form-group">
                     <label for="remark">Remark</label>
-                    <textarea id="remark" placeholder="Please enter remark here"></textarea>
+                    <textarea id="remark" name="remark" placeholder="Please enter remark here"></textarea>
                 </div>
                 <div class="submit">
                     <button type="submit">Submit</button>
@@ -81,15 +73,15 @@
             <form id="feedback-form" class="form-content">
                 <div class="form-group">
                     <label for="feedback-email">Email ID</label>
-                    <input type="email" id="feedback-email" placeholder="Email ID">
+                    <input type="email" id="feedback-email" name="email" placeholder="Email ID">
                 </div>
                 <div class="form-group">
                     <label for="feedback-name">Name</label>
-                    <input type="text" id="feedback-name" placeholder="Enter Name">
+                    <input type="text" id="feedback-name" name="name" placeholder="Enter Name">
                 </div>
                 <div class="form-group">
                     <label for="feedback-comments">Comments</label>
-                    <textarea id="feedback-comments" placeholder="Enter your comments"></textarea>
+                    <textarea id="feedback-comments" name="comments" placeholder="Enter your comments"></textarea>
                 </div>
                 <div class="submit">
                     <button type="submit">Submit</button>
@@ -101,5 +93,44 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+       (function(){
+          emailjs.init("DfIc2Xs7xPlXmTBb5"); // Replace 'YOUR_USER_ID' with your actual user ID from EmailJS
+       })();
+    </script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Handle Enquiry Form Submission
+        document.getElementById('enquiry-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the default way
+    
+            emailjs.sendForm('service_swfi009', 'template_b7vpi4l', this)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    alert('Enquiry submitted successfully!');
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    alert('Failed to submit enquiry. Please try again later.');
+                });
+        });
+    
+        // Handle Feedback Form Submission
+        document.getElementById('feedback-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the default way
+    
+            emailjs.sendForm('service_swfi009', 'template_b7vpi4l', this)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    alert('Feedback submitted successfully!');
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    alert('Failed to submit feedback. Please try again later.');
+                });
+        });
+    });
+    </script>
 </body>
 </html>

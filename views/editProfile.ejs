@@ -1,23 +1,37 @@
 <div class="AddProducts_body">
     <h1 class="aProductss">Edit Profile</h1>
-    <form id="ProfileForm" action="/users/updateProfile/<%= currentUser_Id %>" method="POST" class="AddProducts_form">
+    <form id="ProfileForm" action="/updateProfile" method="post" enctype="multipart/form-data" class="AddProducts_form">
         <label for="username" class="AddProducts_label">Username</label>
-        <input type="text" id="username" name="username" value="<%= user.username %>" placeholder="Enter your username" class="AddProducts_input" required>
+        <input type="text" id="username" name="username" placeholder="Enter your username" class="AddProducts_input"
+            required />
 
         <label for="dateOfBirth" class="AddProducts_label">Date of Birth</label>
-        <input type="date" id="dateOfBirth" name="dateOfBirth" value="<%= user.dateOfBirth ? user.dateOfBirth.toISOString().split('T')[0] : '' %>" placeholder="Enter your date of birth" class="AddProducts_input">
+        <input type="text" id="dateOfBirth" name="dateOfBirth" placeholder="Enter your date of birth"
+            class="AddProducts_input" />
+        <script
+            src="https://apis.mapmyindia.com/advancedmaps/v1/f73ea4da5dee0d63409da7100fbe3251/map_load?v=1.5"></script>
 
-        <label for="address" class="AddProducts_label">Address</label>
-        <input type="text" id="address" name="address" value="<%= user.address %>" placeholder="Enter your address" class="AddProducts_input">
-
+        <div class="edit_address">
+            <label for="address" class="AddProducts_label">Address</label>
+            <div class="input-container">
+                <input type="text" id="address" name="address" placeholder="Enter your address"
+                    class="AddProducts_input" />
+                <button class="get-location-btn" onclick="getLocation()">Get Location</button>
+            </div>
+        </div>
+        <div id="map" style="height: 500px; width: 100%;"></div>
         <label for="password" class="AddProducts_label">Password</label>
-        <input type="password" id="password" name="password" placeholder="Enter your new password" class="AddProducts_input">
+        <input type="password" id="password" name="password" placeholder="Enter your new password"
+            class="AddProducts_input" />
 
         <label for="diagnosis" class="AddProducts_label">Diagnosis Details</label>
-        <textarea id="diagnosis" name="diagnosis" rows="10" placeholder="Enter diagnosis details" class="AddProducts_textarea"><%= user.diagnosis %></textarea>
+        <textarea id="diagnosis" name="diagnosis" rows="10" placeholder="Enter diagnosis details"
+            class="AddProducts_textarea"></textarea>
 
         <section class="AddProducts_createbutton">
             <button type="submit">Update Profile</button>
         </section>
     </form>
 </div>
+<script src="https://apis.mapmyindia.com/advancedmaps/v1/f73ea4da5dee0d63409da7100fbe3251/map_load?v=1.5"></script>
+<script src="script.js"></script>
