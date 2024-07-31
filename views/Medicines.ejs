@@ -1,0 +1,22 @@
+<section id="Medicines_body">
+    <center><h1 class="header-title">Medicines</h1></center>
+    <br>
+    <!-- Search Bar -->
+    <form action="/search" method="GET" class="search-form">
+        <input type="text" name="q" placeholder="Search Equipment..." class="search-input">
+        <button type="submit" class="search-button">Search</button>
+    </form>
+
+    <div class="Product_container">
+        <% Medicines.forEach(function(Medicine) { %>
+            <a href="/Medicine/find/<%= Medicine._id %>">
+                <div class="Product_card" data-categories="<%= Medicine.categories.join(',') %>">
+                    <img src="/<%= Medicine.image %>" alt="Medicine Image">
+                    <h2><%= Medicine.title %></h2>
+                    <div class="category_button"><%= Medicine.categories.join(', ') %></div>
+                    <p><%= Medicine.description %></p>
+                    <p><%= Medicine.use %></p>
+                </div>
+            </a>
+        <% }); %>
+</section>

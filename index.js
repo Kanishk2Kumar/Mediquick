@@ -13,6 +13,7 @@ const jwt = require("jsonwebtoken");
 
 const userRoute = require("./routes/user");
 const productRoute = require("./routes/product");
+const MedicineRoute = require("./routes/Medicines");
 const cartRoute = require("./routes/cart");
 const orderRoute = require("./routes/order");
 const mainRoute = require("./routes/main");
@@ -144,6 +145,7 @@ app.use((req, res, next) => {
 app.use("/", mainRoute);
 app.use("/users", userRoute);
 app.use("/product", productRoute);
+app.use("/medicines", MedicineRoute);
 app.use("/cart", cartRoute);
 app.use("/order", orderRoute);
 
