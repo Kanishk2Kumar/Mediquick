@@ -1,0 +1,90 @@
+<body>
+    <div class="AddProducts_body">
+        <h1 class="aProductss">Add New Medicine</h1>
+        <form id="ProductsForm" action="/medicines/AddMedicine" method="post" class="AddProducts_form">
+            <label for="title" class="AddProducts_label">Medicine Name</label>
+            <input type="text" id="title" name="title" placeholder="Name of the product" class="AddProducts_input" required>
+            <div class="dropdown">
+                <button type="button" class="dropbtn">Categories</button>
+                <div class="dropdown-content" id="dropdown-content">
+                    <a href="#" data-value="PainRelief">Pain Relief</a>
+                    <a href="#" data-value="ColdFlu">Cold & Flu</a>
+                    <a href="#" data-value="Allergy">Allergy</a>
+                    <a href="#" data-value="DigestiveHealth">Digestive Health</a>
+                    <a href="#" data-value="Vitamins">Vitamins & Supplements</a>
+                    <a href="#" data-value="FirstAid">First Aid</a>
+                    <a href="#" data-value="Prescription">Prescription</a>
+                </div>                
+                <div class="selected-categories" id="selected-categories"></div>
+                <input type="hidden" itemid="categories" name="categories" id="categories-input" required>
+            </div>
+            <section class="Imagetaker">
+                <label for="image">Product Image</label>
+                <input type="file" id="image" name="image" accept="image/*" required class="AddProducts_input">
+            </section>
+            <label for="content" class="AddProducts_label">Medicine Description</label>
+            <textarea id="content" name="description" rows="10" placeholder="About Product" required class="AddProducts_textarea"></textarea>
+            <label for="content" class="AddProducts_label">Usage Description</label>
+            <textarea id="content" name="use" rows="10" placeholder="Add How Product can be used" required class="AddProducts_textarea"></textarea>
+            <label for="price" class="AddProducts_label">Medicine Price</label>
+            <input type="number" id="price" name="price" placeholder="Price of the Medicine" class="AddProducts_input" required>
+            <section class="AddProducts_createbutton">
+                <button type="submit">Add Medicine</button>
+            </section>
+        </form>
+    </div>
+    <script >
+        
+document.addEventListener('DOMContentLoaded', () => {
+   const dropdownContent = document.getElementById('dropdown-content');
+   const selectedCategories = document.getElementById('selected-categories');
+   const dropbtn = document.querySelector('.dropbtn');
+   const categoriesInput = document.getElementById('categories-input');
+
+   dropdownContent.addEventListener('click', (event) => {
+       if (event.target.tagName === 'A') {
+           event.preventDefault();
+           const category = event.target.getAttribute('data-value');
+           addCategory(category);
+           dropdownContent.style.display = 'none'; // Close dropdown
+       }
+   });
+
+   dropbtn.addEventListener('click', () => {
+       dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+   });
+
+   function addCategory(category) {
+       if (!categoriesInput.value.includes(category)) {
+           const categoryElement = document.createElement('span');
+           categoryElement.textContent = category;
+           categoryElement.className = 'category-tag';
+           
+           const removeButton = document.createElement('button');
+           removeButton.textContent = 'x';
+           removeButton.className = 'remove-category';
+           removeButton.addEventListener('click', () => {
+               selectedCategories.removeChild(categoryElement);
+               updateCategoriesInput();
+           });
+           
+           categoryElement.appendChild(removeButton);
+           selectedCategories.appendChild(categoryElement);
+           updateCategoriesInput();
+       }
+   }
+
+   function updateCategoriesInput() {
+       const categories = Array.from(selectedCategories.querySelectorAll('.category-tag'))
+           .map(tag => tag.textContent.replace('x', '').trim());
+       categoriesInput.value = categories.join(',');
+   }
+
+   document.addEventListener('click', (event) => {
+       if (!event.target.closest('.dropdown')) {
+           dropdownContent.style.display = 'none';
+       }
+   });
+});
+    </script>
+</body>

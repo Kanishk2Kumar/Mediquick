@@ -1,0 +1,56 @@
+<body>
+    <div class="search-container">
+        <input type="text" class="search-bar" placeholder="Search Product to Edit..." id="searchInput">
+        <a href="/product/AddProduct">
+            <button class="add-option" style="background-color: #28a745; color: white;">+ Add New Products</button>
+        </a>
+    </div>
+
+    <div class="gallery">
+        <% products.forEach(function(product) { %>
+            <div class="product_content" data-categories="<%= product.categories.join(',') %>">
+                <img src="/<%= product.image %>" alt="Product Image">
+                <h2><%= product.title %></h2>
+                <p><%= product.description %></p>
+                <div class="actions">
+                    <button class="delete" style="background-color: #dc3545; color: white;" onclick="deleteProduct('<%= product._id %>')">Delete</button>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+
+    <script>
+        document.getElementById('searchInput').addEventListener('input', function () {
+            const query = this.value.toLowerCase();
+            const products = document.querySelectorAll('.product_content');
+
+            products.forEach(product => {
+                const title = product.querySelector('h2').textContent.toLowerCase();
+                const description = product.querySelector('p').textContent.toLowerCase();
+                if (title.includes(query) || description.includes(query)) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        });
+
+        function deleteProduct(productId) {
+            console.log("Button CLikced")
+            if (confirm('Are you sure you want to delete this product?')) {
+                fetch(`/product/delete/${productId}`, {
+                    method: 'DELETE'
+                }).then(response => {
+                    if (response.ok) {
+                        location.reload(); // Reload the page to reflect the changes
+                    } else {
+                        alert('Failed to delete the product.');
+                    }
+                }).catch(error => {
+                    console.error('Error:', error);
+                    alert('Failed to delete the product.');
+                });
+            }
+        }
+    </script>
+</body>

@@ -7,19 +7,17 @@ const {
 } = require("./verifyToken");
 
 //UPDATE
-router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
-  if (req.body.password) {
-    req.body.password = CryptoJS.AES.encrypt(
-      req.body.password,
-      process.env.PASS_SEC
-    ).toString();
-  }
-
+router.post("/updateProfile/:id", async (req, res) => {
   try {
+    console.log("Edit Profile User: "+ req.body);
     const updatedUser = await User.findByIdAndUpdate(
       req.params.id,
       {
         $set: req.body,
+        password: CryptoJS.AES.encrypt(
+          req.body.password,
+          process.env.PASS_SEC
+        ).toString(),
       },
       { new: true }
     );

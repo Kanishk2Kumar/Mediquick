@@ -1,4 +1,4 @@
-const Product = require("../models/Product");
+const Medicine = require("../models/Medicine");
 const {
   verifyToken,
   verifyTokenAndAuthorization,
@@ -6,29 +6,29 @@ const {
 } = require("./verifyToken");
 
 const router = require("express").Router();
-router.get("/EditProducts", async (req, res) => {
+router.get("/EditMedicines", async (req, res) => {
   if (IsAdmin) {
-  const products = await Product.find();
-  res.render("EditProducts", { products });
+  const Medicines = await Medicine.find();
+  res.render("EditMedicines", { Medicines });
 }else{
   res.status(401).json("You are not authenticated!");
   }
 });
-// Get Create Product
-router.get("/AddProduct", async (req, res) => {
+// Get Create Medicine
+router.get("/AddMedicine", async (req, res) => {
   if (IsAdmin) {
-    res.render("AddProducts");
+    res.render("AddMedicine");
   }else{
     res.status(401).json("You are not authenticated!");
   }
 });
 //CREATE
-router.post("/AddProduct", async (req, res) => { // TESTED
-  console.log(req.body)
-  const newProduct = new Product(req.body);
+router.post("/AddMedicine", async (req, res) => { // TESTED
+  console.log(req.body);
+  const newMedicine = new Medicine(req.body);
 
   try {
-    const savedProduct = await newProduct.save();
+    const savedMedicine = await newMedicine.save();
     res.redirect("/");
   } catch (err) {
     res.status(500).json(err);
@@ -38,22 +38,22 @@ router.post("/AddProduct", async (req, res) => { // TESTED
 //UPDATE
 router.get("/update/:id", verifyTokenAndAdmin, async (req, res) => {
   try {
-    const product = await Product.findById(req.params.id);
-    res.render('UpdateProduct', { product });
+    const Medicine = await Medicine.findById(req.params.id);
+    res.render('UpdateMedicine', { Medicine });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 router.put("/update/:id", verifyTokenAndAdmin, async (req, res) => { // TESTED
   try {
-    const updatedProduct = await Product.findByIdAndUpdate(
+    const updatedMedicine = await Medicine.findByIdAndUpdate(
       req.params.id,
       {
         $set: req.body,
       },
       { new: true }
     );
-    res.status(200).json(updatedProduct);
+    res.status(200).json(updatedMedicine);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -62,43 +62,43 @@ router.put("/update/:id", verifyTokenAndAdmin, async (req, res) => { // TESTED
 //DELETE
 router.delete("/delete/:id", async (req, res) => { // TESTED
   try {
-    await Product.findByIdAndDelete(req.params.id);
-    res.status(200).json("Product has been deleted...");
+    await Medicine.findByIdAndDelete(req.params.id);
+    res.status(200).json("Medicine has been deleted...");
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-//GET PRODUCT
+//GET Medicine
 router.get("/find/:id", async (req, res) => { // TESTED 
   try {
-    const product = await Product.findById(req.params.id);
-    res.render('IndividualCard', { product });
+    const Medicine = await Medicine.findById(req.params.id);
+    res.render('IndividualCard', { Medicine });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-//GET ALL PRODUCTS
+//GET ALL MedicineS
 router.get("/", async (req, res) => { // TESTED
   const qNew = req.query.new;
   const qCategory = req.query.category;
   try {
-    let products;
+    let Medicines;
 
     if (qNew) {
-      products = await Product.find().sort({ createdAt: -1 }).limit(1);
+      Medicines = await Medicine.find().sort({ createdAt: -1 }).limit(1);
     } else if (qCategory) {
-      products = await Product.find({
+      Medicines = await Medicine.find({
         categories: {
           $in: [qCategory],
         },
       });
     } else {
-      products = await Product.find();
+      Medicines = await Medicine.find();
     }
 
-    res.render('Products', { products });
+    res.render('Medicines', { Medicines });
   } catch (err) {
     res.status(500).json(err);
   }

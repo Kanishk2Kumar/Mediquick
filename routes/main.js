@@ -24,9 +24,15 @@ const upload = multer({ storage });
 
 
 // Home route
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   if (IsAdmin) {
-    res.render("Admin")
+    try {
+      const users = await User.find(); 
+      console.log(users);
+      res.render('admin', { users }); // Render the 'admin' template and pass the user data
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
   }else{
     res.render('HomePage');
   }
@@ -44,43 +50,67 @@ router.get("/Doctor", (req, res) => {
 router.get("/WhatWeDo", (req, res) => {
   res.render("WhatWeDo");
 });
-router.get("/Admin", (req, res) => {
+
+router.get("/Admin/AllUsers", async (req, res) => {
   if (IsAdmin) {
-    res.render("Admin")
-  }else{
-    res.send("You are Not Autheticated");
+    try {
+      const users = await User.find();
+      res.render("AllUsers", {users});
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  } else {
+    res.redirect("/login");
   }
-});
-router.get("/Admin/AllUsers", (req, res) => {
-  res.render("AllUsers");
 });
 // Add Products
-router.post("/AddProducts", upload.single('image'), async (req, res) => {
+router.post('/AddProduct', upload.single('image'), async (req, res) => {
   try {
-    const categories = req.body.categories.split(',').map(category => category.trim());
+      const { title, description, use, price, rentalPrice, categories } = req.body;
 
-    const newProduct = new Product({
-      title: req.body.title,
-      description: req.body.description,
-      use: req.body.use,
-      image: req.file.path, // Save the path of the uploaded file
-      categories: categories // Assign parsed categories to the product
-    });
+      // Debug logging
+      console.log('Received data:', req.body);
+      console.log('File info:', req.file);
 
-    const savedProduct = await newProduct.save();
-    console.log("Product Added", savedProduct); // Check if categories are saved
-    res.status(201).redirect('/Admin'); // Redirect to the admin page or wherever you want
-  } catch (error) {
-    if (error.name === "ValidationError") {
-      const errors = Object.values(error.errors).map(err => err.message);
-      console.error(errors);
-      res.status(400).send(errors); // Send validation errors as response
-    } else {
-      console.error(error);
-      res.status(500).send("Internal Server Error");
-    }
+      // Validate required fields
+      if (!title || !description || !price || !rentalPrice) {
+          return res.status(400).send('Missing required fields');
+      }
+
+      // Convert price and rentalPrice to numbers
+      const parsedPrice = parseFloat(price);
+      const parsedRentalPrice = parseFloat(rentalPrice);
+
+      // Check if parsed values are valid numbers
+      if (isNaN(parsedPrice) || isNaN(parsedRentalPrice)) {
+          return res.status(400).send('Invalid price or rentalPrice');
+      }
+
+      // Convert categories to an array if it’s a comma-separated string
+      const categoryArray = categories ? categories.split(',').map(category => category.trim()) : [];
+
+      // Create a new product
+      const product = new Product({
+          title,
+          description,
+          use,
+          image: req.file ? req.file.path : '', // Save file path
+          categories: categoryArray,
+          price: parsedPrice,
+          rentalPrice: parsedRentalPrice,
+          createdAt: new Date(),
+          inStock: true
+      });
+
+      // Save the product
+      await product.save();
+      res.status(201).send('Product added successfully');
+  } catch (err) {
+      console.error('Error adding product:', err);
+      res.status(400).send('Error adding product');
   }
 });
+
 
 router.get("/AddProducts", (req, res) => {
   res.render("AddProducts");
@@ -96,47 +126,62 @@ router.get("/AddProducts", (req, res) => {
 //   }
 // });
 
-// Search
-router.get("/search", async (req, res) => {
-  try {
-    const searchQuery = req.query.q.toLowerCase().trim();
-    const posts = await Product.find({
-      $or: [
-        { title: { $regex: searchQuery, $options: 'i' } },
-        { content: { $regex: searchQuery, $options: 'i' } },
-        { categories: { $regex: searchQuery, $options: 'i' } }
-      ]
-    }).exec();
+// Graphs
+router.get("/Revenue", (req, res) => {
+  res.render("Revenue");
+}); 
 
-    res.render('Products', { data: posts });
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("An error occurred while searching for posts.");
-  }
+// Search Route
+router.get('/search', async (req, res) => {
+    try {
+        const query = req.query.q; // Get search query from the request
+        const products = await Product.find({
+            $or: [
+                { title: { $regex: query, $options: 'i' } }, 
+                { description: { $regex: query, $options: 'i' } },
+                { categories: { $regex: query, $options: 'i' } }
+            ]
+        });
+
+        res.render('Products', { products }); // Render the Products view with search results
+    } catch (error) {
+        console.error('Error performing search:', error);
+        res.status(500).send('Server Error');
+    }
 });
+
 router.get("/IndividualCard", (req, res) => {
   res.render("IndividualCard");
 });
-
+// Profile
+router.get("/Profile", (req, res) => {
+  res.render("Profile");
+});
 // Edit Profile
-router.get("/editProfile", (req, res) => {
-  res.render("editProfile");
+router.get("/editProfile/:id", async (req, res) => {
+  if (SignedIn) {
+    try {
+      const user = await User.findById(req.params.id);
+      console.log("Edit Profile Main: "+ user);
+      res.render("editProfile", { user });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  } else{
+    res.redirect("/login");
+  }
 });
 
-router.post("/editProfile", async (req, res) => {
-  // Add your code for editing the profile
-});
 router.get("/logout", (req, res) => {
-  req.session.destroy((err) => {
-    if (err) {
-      return res.status(500).json("Error logging out!");
-    }
 
     global.SignedIn = false;
     global.currentUser_Id = null;
     global.username = null;
 
-    res.redirect("/login");
+    res.redirect("/");
   });
+
+router.get("/OurTeam", (req, res) => {
+  res.render("OurTeam");
 });
 module.exports = router;

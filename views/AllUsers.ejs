@@ -1,58 +1,45 @@
-<!-- sidebar -->
-<div class="col-md-3 col-lg-2 px-0 position-fixed h-100 bg-white shadow-sm sidebar" id="sidebar">
-    <h1 class="bi bi-bootstrap text-primary d-flex my-4 justify-content-center"></h1>
-    <div class="list-group rounded-0">
-        <a href="/admin" class="list-group-item list-group-item-action active border-0 d-flex align-items-center">
-            <span class="bi bi-border-all"></span>
-            <span class="ml-2">Dashboard</span>
-        </a>
-        <a href="/admin/AddProducts" class="list-group-item list-group-item-action border-0 align-items-center">
-            <span class="bi bi-box"></span>
-            <span class="ml-2">Add Products</span>
-        </a>
-        <a href="/admin/AllUsers" class="list-group-item list-group-item-action border-0 align-items-center">
-            <span class="bi bi-box"></span>
-            <span class="ml-2">All Users</span>
-        </a>
-        <a href="/admin/RevenueGenrated" class="list-group-item list-group-item-action border-0 align-items-center">
-            <span class="bi bi-box"></span>
-            <span class="ml-2">Revenue Genrated</span>
-        </a>
-    </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
 
-<body class="user-table-body">
-    <div class="user-table-container">
-        <h2>User Information</h2>
-        <table class="user-table">
-            <thead>
-                <tr class="user-table-row">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical E-Commerce Admin Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<section id="Admin_body">
+    <nav class="admin-nav">
+      <h1><i class="fas fa-medkit"></i><a href="/">Admin Dashboard</a></h1>
+      <ul>
+        <li><a href="/product/EditProducts"><i class="fas fa-box"></i>Manage Products</a></li>
+        <li><a href="/medicines/EditMedicines"><i class="fas fa-box"></i>Manage Products</a></li>
+        <li><a href="/admin/AllUsers"><i class="fas fa-users"></i>All Users</a></li>
+        <li><a href="/Revenue"><i class="fas fa-chart-line"></i>Sales</a></li>
+      </ul>
+    </nav>
+    <section class="user-table-body">
+        <div class="user-table-container">
+            <h2>User Information</h2>
+            <table class="user-table">
+                <thead>
+                  <tr class="user-table-row" style="color: #005a5b;">
                     <th class="user-table-header">Username</th>
                     <th class="user-table-header">Email</th>
                     <th class="user-table-header">ID</th>
                     <th class="user-table-header">Created At</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="user-table-row">
-                    <td class="user-table-cell">user1</td>
-                    <td class="user-table-cell">user1@example.com</td>
-                    <td class="user-table-cell">001</td>
-                    <td class="user-table-cell">2023-07-20 10:30:00</td>
-                </tr>
-                <tr class="user-table-row">
-                    <td class="user-table-cell">user2</td>
-                    <td class="user-table-cell">user2@example.com</td>
-                    <td class="user-table-cell">002</td>
-                    <td class="user-table-cell">2023-07-21 11:00:00</td>
-                </tr>
-                <tr class="user-table-row">
-                    <td class="user-table-cell">user3</td>
-                    <td class="user-table-cell">user3@example.com</td>
-                    <td class="user-table-cell">003</td>
-                    <td class="user-table-cell">2023-07-22 12:15:00</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</body>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% users.forEach(function(user) { %>
+                  <tr class="user-table-row">
+                    <td class="user-table-cell"><%= user.username %></td>
+                    <td class="user-table-cell"><%= user.email %></td>
+                    <td class="user-table-cell"><%= user._id %></td>
+                    <td class="user-table-cell"><%= user.createdAt.toISOString().split('T')[0] %></td>
+                  </tr>
+                  <% }); %>
+                </tbody>
+              </table>
+        </div>
+</section>
