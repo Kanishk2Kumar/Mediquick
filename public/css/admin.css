@@ -41,7 +41,7 @@ article h4 {
   left: 0;
 }
 .user-table-body {
-  font-family: Arial, sans-serif;
+  font-family:'Roboto', sans-serif, Arial;
   background-color: #f4f4f4;
   padding: 20px;
   display: flex;
@@ -91,7 +91,7 @@ article h4 {
 /* Add Productss */
 /* Body styles */
 .AddProducts_body {
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
   background-color: var(--white); /* Light cream */
   color: var(--text-dark); /* Dark brown */
   line-height: 1.6;
@@ -446,7 +446,7 @@ a {
 }
 
 #Admin_body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
   margin: 0;
   padding: 0;
   display: flex;

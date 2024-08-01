@@ -64,32 +64,53 @@ router.get("/Admin/AllUsers", async (req, res) => {
   }
 });
 // Add Products
-router.post("/AddProducts", upload.single('image'), async (req, res) => {
+router.post('/AddProduct', upload.single('image'), async (req, res) => {
   try {
-    const categories = req.body.categories.split(',').map(category => category.trim());
+      const { title, description, use, price, rentalPrice, categories } = req.body;
 
-    const newProduct = new Product({
-      title: req.body.title,
-      description: req.body.description,
-      use: req.body.use,
-      image: req.file.path, // Save the path of the uploaded file
-      categories: categories // Assign parsed categories to the product
-    });
+      // Debug logging
+      console.log('Received data:', req.body);
+      console.log('File info:', req.file);
 
-    const savedProduct = await newProduct.save();
-    console.log("Product Added", savedProduct); // Check if categories are saved
-    res.status(201).redirect('/Admin'); // Redirect to the admin page or wherever you want
-  } catch (error) {
-    if (error.name === "ValidationError") {
-      const errors = Object.values(error.errors).map(err => err.message);
-      console.error(errors);
-      res.status(400).send(errors); // Send validation errors as response
-    } else {
-      console.error(error);
-      res.status(500).send("Internal Server Error");
-    }
+      // Validate required fields
+      if (!title || !description || !price || !rentalPrice) {
+          return res.status(400).send('Missing required fields');
+      }
+
+      // Convert price and rentalPrice to numbers
+      const parsedPrice = parseFloat(price);
+      const parsedRentalPrice = parseFloat(rentalPrice);
+
+      // Check if parsed values are valid numbers
+      if (isNaN(parsedPrice) || isNaN(parsedRentalPrice)) {
+          return res.status(400).send('Invalid price or rentalPrice');
+      }
+
+      // Convert categories to an array if it’s a comma-separated string
+      const categoryArray = categories ? categories.split(',').map(category => category.trim()) : [];
+
+      // Create a new product
+      const product = new Product({
+          title,
+          description,
+          use,
+          image: req.file ? req.file.path : '', // Save file path
+          categories: categoryArray,
+          price: parsedPrice,
+          rentalPrice: parsedRentalPrice,
+          createdAt: new Date(),
+          inStock: true
+      });
+
+      // Save the product
+      await product.save();
+      res.status(201).send('Product added successfully');
+  } catch (err) {
+      console.error('Error adding product:', err);
+      res.status(400).send('Error adding product');
   }
 });
+
 
 router.get("/AddProducts", (req, res) => {
   res.render("AddProducts");
@@ -110,24 +131,25 @@ router.get("/Revenue", (req, res) => {
   res.render("Revenue");
 }); 
 
-// Search
-router.get("/search", async (req, res) => {
-  try {
-    const searchQuery = req.query.q.toLowerCase().trim();
-    const posts = await Product.find({
-      $or: [
-        { title: { $regex: searchQuery, $options: 'i' } },
-        { content: { $regex: searchQuery, $options: 'i' } },
-        { categories: { $regex: searchQuery, $options: 'i' } }
-      ]
-    }).exec();
+// Search Route
+router.get('/search', async (req, res) => {
+    try {
+        const query = req.query.q; // Get search query from the request
+        const products = await Product.find({
+            $or: [
+                { title: { $regex: query, $options: 'i' } }, 
+                { description: { $regex: query, $options: 'i' } },
+                { categories: { $regex: query, $options: 'i' } }
+            ]
+        });
 
-    res.render('Products', { data: posts });
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("An error occurred while searching for posts.");
-  }
+        res.render('Products', { products }); // Render the Products view with search results
+    } catch (error) {
+        console.error('Error performing search:', error);
+        res.status(500).send('Server Error');
+    }
 });
+
 router.get("/IndividualCard", (req, res) => {
   res.render("IndividualCard");
 });
