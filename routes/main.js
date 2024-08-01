@@ -3,6 +3,7 @@ const router = require("express").Router();
 const multer = require('multer');
 const path = require('path');
 const Product = require('../models/Product');
+const Medicine = require("../models/Medicine");
 const {
   verifyToken,
   verifyTokenAndAuthorization,
@@ -110,7 +111,42 @@ router.post('/AddProduct', upload.single('image'), async (req, res) => {
       res.status(400).send('Error adding product');
   }
 });
+router.post('/AddMedicine', upload.single('image'), async (req, res) => {
+  try {
+    const { title, description, price, categories } = req.body;
 
+    console.log('Received data:', req.body);
+    console.log('File info:', req.file);
+
+    if (!title || !description || !price) {
+      return res.status(400).send('Missing required fields');
+    }
+
+    const parsedPrice = parseFloat(price);
+
+    if (isNaN(parsedPrice)) {
+      return res.status(400).send('Invalid price');
+    }
+
+    const categoryArray = categories ? categories.split(',').map(category => category.trim()) : [];
+
+    const medicine = new Medicine({
+      title,
+      description,
+      image: req.file ? req.file.path : '',
+      categories: categoryArray,
+      price: parsedPrice,
+      createdAt: new Date(),
+      inStock: true
+    });
+
+    await medicine.save();
+    res.status(201).send('Medicine added successfully');
+  } catch (err) {
+    console.error('Error adding Medicine:', err);
+    res.status(400).send('Error adding Medicine');
+  }
+});
 
 router.get("/AddProducts", (req, res) => {
   res.render("AddProducts");
@@ -131,8 +167,8 @@ router.get("/Revenue", (req, res) => {
   res.render("Revenue");
 }); 
 
-// Search Route
-router.get('/search', async (req, res) => {
+// Search Routes
+router.get('/searchP', async (req, res) => {
     try {
         const query = req.query.q; // Get search query from the request
         const products = await Product.find({
@@ -142,12 +178,29 @@ router.get('/search', async (req, res) => {
                 { categories: { $regex: query, $options: 'i' } }
             ]
         });
-
+        
         res.render('Products', { products }); // Render the Products view with search results
     } catch (error) {
         console.error('Error performing search:', error);
         res.status(500).send('Server Error');
     }
+});
+router.get('/searchM', async (req, res) => {
+  try {
+      const query = req.query.q; // Get search query from the request
+      const Medicines = await Medicine.find({
+          $or: [
+              { title: { $regex: query, $options: 'i' } }, 
+              { description: { $regex: query, $options: 'i' } },
+              { categories: { $regex: query, $options: 'i' } }
+          ]
+      });
+      
+      res.render('Medicines', { Medicines }); // Render the Products view with search results
+  } catch (error) {
+      console.error('Error performing search:', error);
+      res.status(500).send('Server Error');
+  }
 });
 
 router.get("/IndividualCard", (req, res) => {
