@@ -13,8 +13,7 @@
                 <h2><%= medicine.title %></h2>
                 <p><%= medicine.description %></p>
                 <div class="actions">
-                    <button class="edit">Edit</button>
-                    <button class="delete">Delete</button>
+                    <button class="delete" style="background-color: #dc3545; color: white;" onclick="deleteProduct('<%= medicine._id %>')">Delete</button>
                 </div>
             </div>
         <% }); %>
@@ -35,5 +34,22 @@
                 }
             });
         });
+        function deleteProduct(productId) {
+            console.log("Button CLikced")
+            if (confirm('Are you sure you want to delete this product?')) {
+                fetch(`/medicines/delete/${productId}`, {
+                    method: 'DELETE'
+                }).then(response => {
+                    if (response.ok) {
+                        location.reload(); // Reload the page to reflect the changes
+                    } else {
+                        alert('Failed to delete the product.');
+                    }
+                }).catch(error => {
+                    console.error('Error:', error);
+                    alert('Failed to delete the product.');
+                });
+            }
+        }
     </script>
 </body>

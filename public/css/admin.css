@@ -49,10 +49,14 @@ article h4 {
   /* align-items: center; */
   height: 100vh;
   box-sizing: border-box;
+  max-width: 1200px;
+  width: 100%;
 }
 .user-table-container {
-  width: 80%; /* Adjust this value to control the left and right gap */
-  max-width: 1000px; /* Optional: maximum width of the table */
+    width: 100%;
+    max-width: 1200px;
+    margin-left: 100px;
+
 }
 .user-table {
   width: 100%;
@@ -65,7 +69,7 @@ article h4 {
   text-align: left;
 }
 .user-table-header {
-  background-color: #007bff;
+  background-color: #005A5B;
   color: #fff;
 }
 .user-table-row:nth-child(even) {
@@ -384,6 +388,7 @@ a {
   gap: 10px; /* Space between the buttons */
   margin-top: 10px;
   margin-bottom: 10px;
+  
 }
 
 .actions .edit,
@@ -428,5 +433,194 @@ a {
   .graphbox{
       grid-template-columns: 1fr;
       height: auto;
+  }
+}
+:root {
+  --primary-color: #005A5B;
+  /* Medical green */
+  --primary-color-dark: #003D3D;
+  --text-dark: #2C2C2C;
+  --white: #F8F9F9;
+  --light-gray: #E0E0E0;
+  --bg-gray: #F2F2F2;
+}
+
+#Admin_body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--bg-gray);
+}
+
+.admin-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  max-width: 350px;
+}
+
+.admin-nav {
+  width: 250px;
+  background-color: var(--white);
+  border-right: 1px solid var(--light-gray);
+  padding: 20px;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+.admin-nav h1 {
+  font-size: 24px;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.admin-nav h1 i {
+  margin-right: 10px;
+}
+
+.admin-nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.admin-nav li {
+  margin: 15px 0;
+}
+
+.admin-nav a {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.admin-nav a i {
+  margin-right: 10px;
+}
+
+.admin-nav a:hover {
+  background-color: var(--primary-color-dark);
+  color: var(--white);
+}
+
+.admin-content {
+  flex: 1;
+  padding: 20px;
+  background-color: var(--white);
+  overflow-y: auto;
+}
+
+.admin-content h2 {
+  font-size: 22px;
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 10px;
+  margin: 0 0 20px;
+}
+
+.admin-content section {
+  display: none;
+}
+
+.admin-content section.active {
+  display: block;
+}
+
+.card {
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.card h3 {
+  margin-top: 0;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+}
+
+.card h3 i {
+  margin-right: 10px;
+}
+
+.card .statistics {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.card .statistics div {
+  flex: 1;
+  background-color: var(--light-gray);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.card .statistics div h4 {
+  margin: 0 0 10px;
+  color: var(--primary-color);
+}
+
+.card table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.card table,
+.card th,
+.card td {
+  border: 1px solid var(--light-gray);
+}
+
+.card th,
+.card td {
+  padding: 10px;
+  text-align: left;
+}
+
+.card th {
+  background-color: #005a5b;
+}
+
+.chart-container {
+  margin-top: 20px;
+  position: relative;
+  height: 400px;
+}
+
+
+/* Add media query for responsive design */
+@media (max-width: 768px) {
+  .admin-nav {
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--light-gray);
+  }
+
+  .admin-nav ul {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  .admin-nav a {
+    flex: 1;
+    text-align: center;
+  }
+
+  .admin-content {
+    padding: 10px;
   }
 }

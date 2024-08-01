@@ -1,0 +1,117 @@
+<!-- overlay -->
+<div id="sidebar-overlay" class="overlay w-100 vh-100 position-fixed d-none"></div>
+
+<!-- sidebar -->
+<div class="col-md-3 col-lg-2 px-0 position-fixed h-100 bg-white shadow-sm sidebar" id="sidebar">
+  <h1 class="bi bi-bootstrap text-success d-flex my-4 justify-content-center"></h1>
+  <div class="list-group rounded-0">
+      <a href="/admin" class="list-group-item list-group-item-action active border-0 d-flex align-items-center">
+          <span class="bi bi-border-all"></span>
+          <span class="ml-2">Dashboard</span>
+      </a>
+      <a href="/product/EditProducts" class="list-group-item list-group-item-action border-0 align-items-center">
+          <span class="bi bi-box"></span>
+          <span class="ml-2">Add Products</span>
+      </a>
+      <a href="/medicines/EditMedicines" class="list-group-item list-group-item-action border-0 align-items-center">
+        <span class="bi bi-box"></span>
+        <span class="ml-2">Add Medicines</span>
+    </a>
+      <a href="/admin/AllUsers" class="list-group-item list-group-item-action border-0 align-items-center">
+          <span class="bi bi-box"></span>
+          <span class="ml-2">All Users</span>
+      </a>
+      <a href="/Revenue" class="list-group-item list-group-item-action border-0 align-items-center">
+          <span class="bi bi-box"></span>
+          <span class="ml-2">Revenue Generated</span>
+      </a>
+  </div>
+</div>
+
+<div class="col-md-9 col-lg-10 ml-md-auto px-0 ms-md-auto">
+  <!-- top nav -->
+  <nav class="w-100 d-flex px-4 py-2 mb-4 shadow-sm">
+    <!-- close sidebar -->
+    <button class="btn py-0 d-lg-none" id="open-sidebar">
+      <span class="bi bi-list text-success h3"></span>
+    </button>
+    <div class="dropdown ml-auto">
+      <button class="btn py-0 d-flex align-items-center" id="logout-dropdown" data-toggle="dropdown" aria-expanded="false">
+        <span class="bi bi-person text-success h4"></span>
+        <span class="bi bi-chevron-down ml-1 mb-2 small"></span>
+      </button>
+      <div class="dropdown-menu dropdown-menu-right border-0 shadow-sm" aria-labelledby="logout-dropdown">
+        <a class="dropdown-item" href="#">Logout</a>
+        <a class="dropdown-item" href="#">Settings</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- main content -->
+  <main class="p-4 min-vh-100">
+    <section class="row">
+      <div class="col-md-6 col-lg-4">
+        <!-- card -->
+        <article class="p-5 rounded shadow-sm border-left mb-4">
+          <a href="#" class="d-flex align-items-center">
+            <span class="bi bi-box h4 text-success"></span>
+            <h4 class="ml-3">Add Products</h4>
+          </a>
+        </article>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <article class="p-5 rounded shadow-sm border-left mb-4">
+          <a href="#" class="d-flex align-items-center">
+            <span class="bi bi-person h4 text-success"></span>
+            <h4 class="ml-3">All Users</h4>
+          </a>
+        </article>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <article class="p-5 rounded shadow-sm border-left mb-4">
+          <a href="#" class="d-flex align-items-center">
+            <span class="bi bi-person-check h4 text-success"></span>
+            <h4 class="ml-3">Revenue Generated</h4>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <div class="jumbotron jumbotron-fluid rounded bg-white border-0 shadow-sm border-left px-5">
+      <div class="container">
+        <h1 class="display-4 mb-3 text-success">Recent Users</h1> 
+
+        <div class="my-4 p-4 bg-body rounded shadow-sm">
+          <div class="d-flex text-body-secondary pt-4">
+            <svg class="bd-placeholder-img flex-shrink-0 me-3 rounded" width="40" height="40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 40x40" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#28a745"></rect><text x="50%" y="50%" fill="#28a745" dy=".3em">40x40</text></svg>
+            <p class="pb-4 mb-0 large lh-sm border-bottom">
+              <strong class="d-block text-gray-dark user_card">@username</strong>
+              <strong class="d-block text-gray-dark">Password : </strong>Encrypted Password
+            </p>
+          </div>
+          <div class="d-flex text-body-secondary pt-4">
+            <svg class="bd-placeholder-img flex-shrink-0 me-3 rounded" width="40" height="40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 40x40" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#e83e8c"></rect><text x="50%" y="50%" fill="#e83e8c" dy=".3em">40x40</text></svg>
+            <p class="pb-4 mb-0 large lh-sm border-bottom">
+              <strong class="d-block text-gray-dark">@username</strong>
+              <strong class="d-block text-gray-dark">Password : </strong>Encrypted Password
+            </p>
+          </div>
+          <div class="d-flex text-body-secondary pt-4">
+            <svg class="bd-placeholder-img flex-shrink-0 me-3 rounded" width="40" height="40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 40x40" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#6f42c1"></rect><text x="50%" y="50%" fill="#6f42c1" dy=".3em">40x40</text></svg>
+            <p class="pb-4 mb-0 large lh-sm border-bottom">
+              <strong class="d-block text-gray-dark">@username</strong>
+              <strong class="d-block text-gray-dark">Password : </strong>Encrypted Password
+            </p>
+          </div>
+          <small class="d-block text-end mt-4">
+            <a href="#">All Users</a>
+          </small>
+        </div>
+      </div>
+    </div>
+    <div class="jumbotron jumbotron-fluid rounded bg-white border-0 shadow-sm border-left px-5">
+      <h1 class="display-4 mb-3 text-success">Revenue Generated</h1> 
+      <div class="Power-Bi">Integrate with Power Bi</div>
+    </div>
+  </main>
+</div>

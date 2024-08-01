@@ -60,7 +60,7 @@ router.put("/update/:id", verifyTokenAndAdmin, async (req, res) => { // TESTED
 });
 
 //DELETE
-router.delete("/delete/:id", verifyTokenAndAdmin, async (req, res) => { // TESTED
+router.delete("/delete/:id", async (req, res) => { // TESTED
   try {
     await Product.findByIdAndDelete(req.params.id);
     res.status(200).json("Product has been deleted...");

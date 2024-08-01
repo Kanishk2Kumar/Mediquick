@@ -24,9 +24,15 @@ const upload = multer({ storage });
 
 
 // Home route
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   if (IsAdmin) {
-    res.render("Admin")
+    try {
+      const users = await User.find(); 
+      console.log(users);
+      res.render('admin', { users }); // Render the 'admin' template and pass the user data
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
   }else{
     res.render('HomePage');
   }
@@ -44,15 +50,18 @@ router.get("/Doctor", (req, res) => {
 router.get("/WhatWeDo", (req, res) => {
   res.render("WhatWeDo");
 });
-router.get("/Admin", (req, res) => {
+
+router.get("/Admin/AllUsers", async (req, res) => {
   if (IsAdmin) {
-    res.render("Admin")
-  }else{
-    res.send("You are Not Autheticated");
+    try {
+      const users = await User.find();
+      res.render("AllUsers", {users});
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  } else {
+    res.redirect("/login");
   }
-});
-router.get("/Admin/AllUsers", (req, res) => {
-  res.render("AllUsers");
 });
 // Add Products
 router.post("/AddProducts", upload.single('image'), async (req, res) => {
