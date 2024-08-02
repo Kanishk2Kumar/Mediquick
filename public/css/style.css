@@ -156,10 +156,6 @@
     margin-left: 8px;
 }
 
-.menu-bar ul li a:hover {
-    color: var(--color-primary);
-}
-
 .dropdown-menu {
     display: none;
     overflow: hidden;
@@ -1133,14 +1129,14 @@ h1 {
 
 .point h2 {
     margin: 0;
-    font-size: 13px;
+    font-size: 20px;
     color: #333;
     font-weight: bold;
 }
 
 .point p {
     margin: 0;
-    font-size: 13px;
+    font-size: 20px;
     color: #555;
 }
 
@@ -1553,7 +1549,7 @@ h1 {
 }
 
 .footer_col .flogo {
-    width: 130px;
+    width: 180px;
     margin-bottom: 25px;
     margin-left: -10px;
 }
@@ -1795,7 +1791,6 @@ h1 {
 
 .profile-header {
     display: flex;
-    align-items: center;
     border-bottom: 2px solid #ddd;
     /* Light gray border */
     padding-bottom: 20px;
@@ -2271,8 +2266,11 @@ h1 {
     cursor: pointer;
     z-index: 2;
     border-radius: 10px;
+    text-decoration: none;
 }
-
+.slide-button a{
+    text-decoration: none;
+}
 .slider-button.prev {
     left: 0;
 }
@@ -2594,15 +2592,15 @@ img {
     background-color: #ede9da;
     border-radius: 3px;
     column-gap: 0px;
-    height: 750px;
+    height: 850px;
     width: 1300px;
 }
 
 .product-div-left {
     display: flex;
     padding: 20px;
+    flex-direction: column;
 }
-
 .hover-container {
     display: flex;
     flex-direction: column;
@@ -2644,10 +2642,12 @@ img {
 .img-container {
     position: relative;
     overflow: hidden;
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
     margin-left: 50px;
     margin-top: 40px;
+    border: 2px solid black;
+    border-radius: 20px;
 }
 
 .img-container img {
@@ -3253,7 +3253,7 @@ button:active {
 }
 
 .point-description_elder {
-    font-size: 16px;
+    font-size: 20px;
     color: #555;
     margin-bottom: 20px;
     line-height: 1.6;
@@ -4272,7 +4272,9 @@ body.adv {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
+    margin-top: auto;
+    margin-bottom: 100px;
   }
   
   .Product_card-Medicines {

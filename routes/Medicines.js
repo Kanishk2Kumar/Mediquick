@@ -115,12 +115,16 @@ router.delete("/delete/:id", async (req, res) => { // TESTED
   }
 });
 
-//GET Medicine
-router.get("/find/:id", async (req, res) => { // TESTED 
+router.get("/find/:id", async (req, res) => {
   try {
-    const Medicine = await Medicine.findById(req.params.id);
-    res.render('IndividualCard', { Medicine });
+    const medicine = await Medicine.findById(req.params.id);
+    if (medicine) {
+      res.render('IndividualCardM', { Medicine: medicine });
+    } else {
+      res.status(404).json("Medicine not found");
+    }
   } catch (err) {
+    console.error('Error fetching Medicine:', err);
     res.status(500).json(err);
   }
 });

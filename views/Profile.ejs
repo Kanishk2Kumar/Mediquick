@@ -11,16 +11,16 @@
         <div class="profile-section">
             <h2><span class="icon">&#128100;</span>Personal Information</h2>
             <p class="label">Address:</p>
-            <p>123 Main St, City, Country</p>
+            <p><%= user.address %></p>
 
             <p class="label">Email Address:</p>
-            <p>john.doe@example.com</p>
+            <p><%= user.email %> </p>
         </div>
 
         <div class="profile-section">
             <h2><span class="icon">&#128137;</span>Diagnosis Details</h2>
             <div class="diagnosis">
-                <p>diagnosis details here. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, reprehenderit similique hic eligendi alias quos incidunt deserunt, saepe quia velit, consequuntur quam. Consequatur iure maxime atque inventore quas similique esse?</p>                
+                <p><%= user.Diagonsis %></p>                
             </div>
         </div>
     </div>

@@ -14,7 +14,7 @@
         <button type="submit" class="search-button">Search</button>
     </form>
 
-    <div class="product_container">
+    <div class="Product_container-Medicines">
         <% products.forEach(function(product) { %>
             <a href="/product/find/<%= product._id %>">
                 <div class="product_card" data-categories="<%= product.categories.join(',') %>">
