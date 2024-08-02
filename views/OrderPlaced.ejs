@@ -1,0 +1,28 @@
+<div class="order-container">
+    <h1>Place Order</h1>
+    <form id="orderForm">
+      <div class="form-group-order">
+        <label for="username" value="<%= users.username %>">Name:</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="form-group-order">
+        <label for="address">Delivery Address:</label>
+        <textarea id="address" name="address" required></textarea>
+      </div>
+      <div class="form-group-order">
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+      </div>
+      <div class="summary">
+        <h3>Order Summary</h3>
+        <p>Item: Health Package</p>
+        <p>Price: $50</p>
+        <p>Delivery Charge: $5</p>
+        <p><strong>Total: $55</strong></p>
+      </div>
+      <button type="button" class="order-placed" id="payNowButton" onclick="payNow()">Pay Now</button>
+      <div class="success-animation" id="successAnimation">
+        <div class="checkmark"></div>
+      </div>
+    </form>
+  </div>

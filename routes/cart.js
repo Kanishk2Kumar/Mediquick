@@ -8,12 +8,21 @@ const {
 const router = require("express").Router();
 
 router.get("/", async (req, res) => {
-    try {
-        const cart = await Cart.findOne({ userId: currentUser_Id }).populate('products.productId');
-        res.render("Cart", { cart });
-    } catch (err) {
-        console.error("Error fetching cart:", err);
-        res.status(500).send("Internal Server Error");
+    if(SignedIn){
+        try {
+            const cart = await Cart.findOne({ userId: currentUser_Id }).populate('products.productId');
+            res.render("Cart", { cart });
+        } catch (err) {
+            console.error("Error fetching cart:", err);
+            res.status(500).send("Internal Server Error");
+        }
+    } else{
+        res.send(`
+            <script>
+                alert("You must be signed in to add items to your cart.");
+                window.location.href = "/login"; // Redirect to login page
+            </script>
+        `);
     }
 });
 // CREATE

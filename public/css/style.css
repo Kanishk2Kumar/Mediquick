@@ -1946,11 +1946,6 @@ h1 {
     cursor: pointer;
 }
 
-.AddProducts_createbutton button:hover {
-    background-color: var(--primary-color);
-    /* Darker green */
-}
-
 /* Products */
 :root {
     --primary-color: #073D3D;
@@ -1973,7 +1968,6 @@ h1 {
     background-color: var(--white);
     border: 1px solid var(--light-brown);
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -1981,6 +1975,8 @@ h1 {
     text-align: center;
     transition: opacity 0.3s ease-in-out;
     /* Add transition for smooth hiding/showing */
+    height: 450px;
+    width: 400px;
 }
 
 .product_card img {
@@ -2006,7 +2002,7 @@ h1 {
 .product_card p {
     color: var(--primary-color-dark);
     padding: 0 10px 10px;
-    max-height: 100px;
+    max-height: 20px;
     overflow: hidden;
 }
 
@@ -2598,7 +2594,8 @@ img {
     background-color: #ede9da;
     border-radius: 3px;
     column-gap: 0px;
-    height: 500px;
+    height: 750px;
+    width: 1300px;
 }
 
 .product-div-left {
@@ -3178,3 +3175,1156 @@ button:active {
 .slider-containerExt{
     margin-right: 200px;
 }
+/* Elder Care */
+.elder_care {
+    font-family: 'Times New Roman', serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #D8E0D8;
+}
+
+.container_elder {
+    display: flex;
+    width: 80%;
+    height: 90%;
+    background-color: #D8E0D8;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    /* max-width: 1200px; */
+    margin: 50px auto;
+    
+}
+
+
+.text-section_elder {
+    padding: 40px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #D8E0D8;
+}
+
+.points_elder {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-left: -20px;
+}
+
+.image-section1_elder {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 70px;
+}
+
+.image-section1_elder img {
+    display: block;
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+
+.custom-h2-question_elder {
+    font-size: 36px;
+    color: #333;
+    margin: 0;
+    line-height: 1.2;
+    margin-top: 70px;
+}
+
+.custom-h2-nurse_elder {
+    font-size: 32px;
+    color: #333;
+    margin: 0;
+    line-height: 1.2;
+    margin-top: 40px;
+    margin-bottom: 30px;
+
+}
+
+.point-description_elder {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    margin-left: 20px;
+}
+
+.assistance-list_elder {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+    margin-left: 20px;
+}
+
+.assistance-list_elder li {
+    flex: 1 0 50%;
+    margin: 5px 0;
+}
+
+.slider-container-elder {
+    position: relative;
+    width: 90%;
+    margin-top: 50px;
+    overflow: hidden;
+    background-color: #D8E0D8;
+    padding: 130px;
+}
+
+
+.sliderE {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.E-cards {
+    display: flex;
+    gap: 2rem;
+}
+
+.E-card {
+    min-width: calc(25% - 1.5rem);
+    position: relative;
+    display: block;
+    height: 100%;
+    border-radius: 40px;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.E-card__image {
+    width: 100%;
+    height: auto;
+}
+
+.E-card__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    border-radius: 40px;
+    background-color: #EADCAE;
+    transform: translateY(100%);
+    transition: .2s ease-in-out;
+}
+
+.E-card:hover .E-card__overlay {
+    transform: translateY(0);
+}
+
+.E-card__header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    padding: 2em;
+    border-radius: 40px 0 0 0;
+    background-color: #EADCAE;
+    transform: translateY(-100%);
+    transition: .2s ease-in-out;
+}
+
+.E-card__arc {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    z-index: 1;
+}
+
+.E-card__arc path {
+    fill: #EADCAE;
+    d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
+}
+
+.E-card:hover .E-card__header {
+    transform: translateY(0);
+}
+
+.E-card__thumb {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.E-card__title {
+    font-size: 1em;
+    margin: 0 0 .3em;
+    color: #000;
+}
+
+.E-card__tagline {
+    display: block;
+    margin: 1em 0;
+    font-family: "MockFlowFont";
+    font-size: .8em;
+    color: #000;
+}
+
+.E-card__status {
+    font-size: .8em;
+    color: #000;
+}
+
+.E-card__description {
+    padding: 0 2em 2em;
+    margin: 0;
+    color: #000;
+    font-family: "MockFlowFont";
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+
+.Eslider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    padding: 0.5rem;
+    cursor: pointer;
+    z-index: 2;
+    border-radius: 10px;
+}
+
+.Eslider-button.prev {
+    left: 0;
+}
+
+.EEslider-button.next {
+    right: 0;
+}
+
+.working{
+    background:#e0f7fa;
+}
+
+.ecare {
+    background: #e0f7fa;
+    /* Light blue background */
+    color: #101010;
+    /* Dark text color for contrast */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Container styling */
+.ecare_container {
+    width: 90%;
+    max-width: 1200px;
+    /* Optional: set a max-width */
+    margin: 0 auto;
+    /* Center the container horizontally */
+}
+
+/* Row styling */
+.ecare_row {
+    display: flex;
+    justify-content: space-between;
+    /* Space out items */
+    align-items: flex-start;
+    /* Align items at the top */
+    gap: 20px;
+    /* Space between items */
+    margin-bottom: 100px;
+    /* Space between rows */
+    position: relative;
+    /* Ensure proper overlap with z-index */
+}
+
+/* Item styling */
+.ecare_item {
+    position: relative;
+    /* Position relative for absolute positioning of text box */
+    width: 30%;
+    /* Adjust width to fit 3 items in a row */
+}
+
+/* Image styling */
+.ecare_container img {
+    margin-top: 50px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    /* Adjust shadow for lighter background */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    /* Adjust border color */
+}
+
+/* Box styling */
+/* Existing CSS for ecare_box */
+.ecare_box {
+    z-index: 2;
+    /* Ensure it is above the image */
+    background: #C8D5B7;
+    /* White background for the box */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    /* Adjust shadow for lighter background */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    /* Adjust border color */
+    padding: 15px;
+    border-radius: 15px;
+    width: 80%;
+    /* Width of the box */
+    position: absolute;
+    bottom: -2.5cm;
+    /* Overlap the bottom of the image by 1 cm */
+    left: 50%;
+    /* Center horizontally */
+    transform: translateX(-50%);
+    /* Center horizontally */
+    text-align: center;
+    /* Center text inside box */
+    transition: all 0.3s ease;
+    /* Smooth transition for hover effects */
+}
+
+/* Hover effect for ecare_box */
+.ecare_box:hover {
+    background: #296564;
+    /* Light green background on hover */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    /* Darker shadow on hover */
+    transform: translateX(-50%) scale(1.05);
+    /* Slight scale up effect */
+}
+
+/* Adjusting text color on hover (optional) */
+.ecare_box:hover h2 {
+    color: #fff;
+    /* Darker text color on hover */
+}
+
+.ecare_box:hover p {
+    color: #fff;
+    /* Darker text color on hover */
+}
+
+.ecare_box:hover .logo {
+    color: #fff;
+    /* Darker color for logo on hover */
+}
+
+/* Icon styling */
+.ecare_box .logo {
+    font-size: 2rem;
+    /* Adjust size of the icon */
+    color: #00796b;
+    /* Adjust color of the icon */
+    display: block;
+    margin: 0 auto;
+    /* Center icon horizontally */
+}
+
+/* Heading styling */
+.ecare_box h2 {
+    font-size: 1.5rem;
+    /* Adjust font size if needed */
+    margin-top: 10px;
+    /* Space above heading */
+    font-weight: 400;
+}
+
+/* Paragraph styling */
+.ecare_box p {
+    opacity: 0.9;
+    font-weight: 300;
+    margin-top: 10px;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
+
+* {
+    box-sizing: border-box;
+}
+
+body.eadv {
+    --h: 212deg;
+    --l: 43%;
+    --brandColor: hsl(var(--h), 71%, var(--l));
+    margin: 0;
+    background-color: whitesmoke;
+}
+
+.eadv_paragraph {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.eadv_list {
+    list-style: none;
+    counter-reset: list;
+    padding: 0 1rem;
+}
+
+.eadv_list-item {
+    --stop: calc(100% / var(--length) * var(--i));
+    --l: 62%;
+    --l2: 88%;
+    --h: calc((var(--i) - 1) * (180 / var(--length)));
+    --c1: hsl(var(--h), 71%, var(--l));
+    --c2: hsl(var(--h), 71%, var(--l2));
+
+    position: relative;
+    counter-increment: list;
+    max-width: 45rem;
+    margin: 0.5rem auto;
+    /* Reduced margin */
+    padding: 0.5rem 1rem;
+    /* Adjusted padding */
+    box-shadow: 0.1rem 0.1rem 0.5rem rgba(0, 0, 0, 0.3);
+    /* Reduced shadow */
+    border-radius: 0.25rem;
+    overflow: hidden;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.eadv_list-item::before {
+    content: counter(list);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    /* Adjusted width of the counter circle */
+    height: 2rem;
+    /* Adjusted height of the counter circle */
+    border-radius: 50%;
+    background-color: #073D3D;
+    color: white;
+    position: absolute;
+    top: 0.5rem;
+    /* Adjusted positioning */
+    left: 0.5rem;
+    /* Adjusted positioning */
+}
+
+.eadv_list-item p {
+    margin-left: 3rem;
+    /* Space for the circle */
+}
+
+@media (min-width: 40em) {
+    .eadv_list-item {
+        margin: 1rem auto;
+        /* Adjusted margin for larger screens */
+        padding: 1rem 1.5rem;
+        /* Adjusted padding for larger screens */
+    }
+
+    .eadv_list-item::before {
+        width: 2.5rem;
+        /* Adjusted width of the counter circle */
+        height: 2.5rem;
+        /* Adjusted height of the counter circle */
+        top: 0.75rem;
+        /* Adjusted positioning */
+        left: 0.75rem;
+        /* Adjusted positioning */
+    }
+
+    .eadv_list-item p {
+        margin-left: 3.5rem;
+        /* Adjusted space for the circle */
+    }
+}
+
+.custom-h2-eadv {
+    font-size: 30px;
+    color: #333;
+    margin: 0;
+    line-height: 1.2;
+    margin-top: 70px;
+    margin-left: 20px;
+}
+
+.eadv_list-item:nth-child(1) {
+    background-color: #cddea7;
+    /* Light Red */
+}
+
+.eadv_list-item:nth-child(2) {
+    background-color: #adc48a;
+    /* Light Red */
+}
+
+.eadv_list-item:nth-child(3) {
+    background-color: #8dab6f;
+    /* Light Orange */
+}
+
+.eadv_list-item:nth-child(4) {
+    background-color: #6f9257;
+    /* Light Pink */
+}
+
+.eadv_list-item:nth-child(5) {
+    background-color: #537942;
+    /* Light Teal */
+}
+
+.eadv_list-item:hover {
+    transform: scale(1.05);
+    /* Slightly enlarge the box on hover */
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+    /* Enhanced shadow on hover */
+}
+
+/* body {
+    font-family: Arial, sans-serif;
+    background-color: #ff5722;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+} */
+
+.elder-care-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+
+.elder-care-container h1 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+}
+
+.elder-care-steps {
+    /* display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; */
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 20px auto;
+    margin-bottom: 50px;
+    margin-top: 30px;
+    margin-left: 200px;
+    
+}
+
+.elder-care-step {
+    max-width: 300px;
+    margin: 20px;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    border-radius: 15px;
+    width: 80%;
+    background: #C8D5B7;
+    transform: translateX(-50%);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.elder-care-step:hover{
+    background: #296564;
+}
+
+.fa-solid fa-list{
+    font-size: 200px;
+}
+
+.elder-care-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.elder-care-icon img {
+    width: 50%;
+    height: 50%;
+}
+
+.elder-care-step h2 {
+    font-size: 1.5em;
+    margin: 20px 0;
+}
+
+.elder-care-step p {
+    font-size: 1em;
+}
+.nursing_care {
+    font-family: 'Times New Roman', serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #D8E0D8;
+}
+
+.container3 {
+    display: flex;
+    width: 90%;
+    height: 90%;
+    background-color: #D8E0D8;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.text-section {
+    padding: 40px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #D8E0D8;
+}
+
+.points {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-left: -20px;
+}
+
+.image-section1 {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 70px;
+}
+
+.image-section1 img {
+    display: block;
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+
+.custom-h2-question {
+    font-size: 36px;
+    color: #333;
+    margin: 0;
+    line-height: 1.2;
+    margin-top: 70px;
+}
+
+.custom-h2-nurse {
+    font-size: 32px;
+    color: #333;
+    margin: 0;
+    line-height: 1.2;
+    margin-top: 70px;
+}
+
+.point-description {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    margin-left: 20px;
+}
+
+.assistance-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+    margin-left: 20px;
+}
+
+.assistance-list li {
+    flex: 1 0 50%;
+    margin: 5px 0;
+}
+
+.slider-container-N {
+    position: relative;
+    margin-top: 50px;
+    overflow: hidden;
+    background-color: #D8E0D8;
+    padding: 130px;
+}
+
+.sliderN {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.Ncards {
+    display: flex;
+    gap: 2rem;
+}
+
+.Ncard {
+    min-width: calc(25% - 1.5rem);
+    position: relative;
+    display: block;
+    height: 100%;
+    border-radius: 40px;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.card__image {
+    width: 100%;
+    height: auto;
+}
+
+.card__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    border-radius: 40px;
+    background-color: #EADCAE;
+    transform: translateY(100%);
+    transition: .2s ease-in-out;
+}
+
+.Ncard:hover .card__overlay {
+    transform: translateY(0);
+}
+
+.card__header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    padding: 2em;
+    border-radius: 40px 0 0 0;
+    background-color: #EADCAE;
+    transform: translateY(-100%);
+    transition: .2s ease-in-out;
+}
+
+.card__arc {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    z-index: 1;
+}
+
+.card__arc path {
+    fill: #EADCAE;
+    d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
+}
+
+.Ncard:hover .card__header {
+    transform: translateY(0);
+}
+
+.card__thumb {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.card__title {
+    font-size: 1em;
+    margin: 0 0 .3em;
+    color: #000;
+}
+
+.card__tagline {
+    display: block;
+    margin: 1em 0;
+    font-family: "MockFlowFont";
+    font-size: .8em;
+    color: #000;
+}
+
+.card__status {
+    font-size: .8em;
+    color: #000;
+}
+
+.card__description {
+    padding: 0 2em 2em;
+    margin: 0;
+    color: #000;
+    font-family: "MockFlowFont";
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+
+.slider-button-N {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    padding: 0.5rem;
+    cursor: pointer;
+    z-index: 2;
+    border-radius: 10px;
+}
+
+.slider-button-prev.prev {
+    left: 0;
+}
+
+.slider-button-next.next {
+    right: 0;
+}
+
+.ncare {
+    background: #e0f7fa;
+    /* Light blue background */
+    color: #101010;
+    /* Dark text color for contrast */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Container styling */
+.ncare_container {
+    width: 90%;
+    max-width: 1200px;
+    /* Optional: set a max-width */
+    margin: 0 auto;
+    /* Center the container horizontally */
+}
+
+/* Row styling */
+.ncare_row {
+    display: flex;
+    justify-content: space-between;
+    /* Space out items */
+    align-items: flex-start;
+    /* Align items at the top */
+    gap: 20px;
+    /* Space between items */
+    margin-bottom: 100px;
+    /* Space between rows */
+    position: relative;
+    /* Ensure proper overlap with z-index */
+}
+
+/* Item styling */
+.ncare_item {
+    position: relative;
+    /* Position relative for absolute positioning of text box */
+    width: 30%;
+    /* Adjust width to fit 3 items in a row */
+}
+
+/* Image styling */
+.ncare_container img {
+    margin-top: 50px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    /* Adjust shadow for lighter background */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    /* Adjust border color */
+}
+
+/* Box styling */
+/* Existing CSS for ncare_box */
+.ncare_box {
+    z-index: 2;
+    /* Ensure it is above the image */
+    background: #C8D5B7;
+    /* White background for the box */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    /* Adjust shadow for lighter background */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    /* Adjust border color */
+    padding: 15px;
+    border-radius: 15px;
+    width: 80%;
+    /* Width of the box */
+    position: absolute;
+    bottom: -2.5cm;
+    /* Overlap the bottom of the image by 1 cm */
+    left: 50%;
+    /* Center horizontally */
+    transform: translateX(-50%);
+    /* Center horizontally */
+    text-align: center;
+    /* Center text inside box */
+    transition: all 0.3s ease;
+    /* Smooth transition for hover effects */
+}
+
+/* Hover effect for ncare_box */
+.ncare_box:hover {
+    background: #296564;
+    /* Light green background on hover */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    /* Darker shadow on hover */
+    transform: translateX(-50%) scale(1.05);
+    /* Slight scale up effect */
+}
+
+/* Adjusting text color on hover (optional) */
+.ncare_box:hover h2 {
+    color: #fff;
+    /* Darker text color on hover */
+}
+
+.ncare_box:hover p {
+    color: #fff;
+    /* Darker text color on hover */
+}
+
+.ncare_box:hover .logo {
+    color: #fff;
+    /* Darker color for logo on hover */
+}
+
+/* Icon styling */
+.ncare_box .logo {
+    font-size: 2rem;
+    /* Adjust size of the icon */
+    color: #00796b;
+    /* Adjust color of the icon */
+    display: block;
+    margin: 0 auto;
+    /* Center icon horizontally */
+}
+
+/* Heading styling */
+.ncare_box h2 {
+    font-size: 1.5rem;
+    /* Adjust font size if needed */
+    margin-top: 10px;
+    /* Space above heading */
+    font-weight: 400;
+}
+
+/* Paragraph styling */
+.ncare_box p {
+    opacity: 0.9;
+    font-weight: 300;
+    margin-top: 10px;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
+
+* {
+    box-sizing: border-box;
+}
+
+body.adv {
+    --h: 212deg;
+    --l: 43%;
+    --brandColor: hsl(var(--h), 71%, var(--l));
+    margin: 0;
+    background-color: whitesmoke;
+}
+
+.adv_paragraph {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.adv_list {
+    list-style: none;
+    counter-reset: list;
+    padding: 0 1rem;
+}
+
+.adv_list-item {
+    --stop: calc(100% / var(--length) * var(--i));
+    --l: 62%;
+    --l2: 88%;
+    --h: calc((var(--i) - 1) * (180 / var(--length)));
+    --c1: hsl(var(--h), 71%, var(--l));
+    --c2: hsl(var(--h), 71%, var(--l2));
+
+    position: relative;
+    counter-increment: list;
+    max-width: 45rem;
+    margin: 0.5rem auto;
+    /* Reduced margin */
+    padding: 0.5rem 1rem;
+    /* Adjusted padding */
+    box-shadow: 0.1rem 0.1rem 0.5rem rgba(0, 0, 0, 0.3);
+    /* Reduced shadow */
+    border-radius: 0.25rem;
+    overflow: hidden;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.adv_list-item::before {
+    content: counter(list);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    /* Adjusted width of the counter circle */
+    height: 2rem;
+    /* Adjusted height of the counter circle */
+    border-radius: 50%;
+    background-color: #073D3D;
+    color: white;
+    position: absolute;
+    top: 0.5rem;
+    /* Adjusted positioning */
+    left: 0.5rem;
+    /* Adjusted positioning */
+}
+
+.adv_list-item p {
+    margin-left: 3rem;
+    /* Space for the circle */
+}
+
+@media (min-width: 40em) {
+    .adv_list-item {
+        margin: 1rem auto;
+        /* Adjusted margin for larger screens */
+        padding: 1rem 1.5rem;
+        /* Adjusted padding for larger screens */
+    }
+
+    .adv_list-item::before {
+        width: 2.5rem;
+        /* Adjusted width of the counter circle */
+        height: 2.5rem;
+        /* Adjusted height of the counter circle */
+        top: 0.75rem;
+        /* Adjusted positioning */
+        left: 0.75rem;
+        /* Adjusted positioning */
+    }
+
+    .adv_list-item p {
+        margin-left: 3.5rem;
+        /* Adjusted space for the circle */
+    }
+}
+
+.custom-h2-adv {
+    font-size: 30px;
+    color: #333;
+    margin: 0;
+    line-height: 1.2;
+    margin-top: 70px;
+    margin-left: 20px;
+}
+
+.adv_list-item:nth-child(1) {
+    background-color: #cddea7;
+    /* Light Red */
+}
+
+.adv_list-item:nth-child(2) {
+    background-color: #adc48a;
+    /* Light Red */
+}
+
+.adv_list-item:nth-child(3) {
+    background-color: #8dab6f;
+    /* Light Orange */
+}
+
+.adv_list-item:nth-child(4) {
+    background-color: #6f9257;
+    /* Light Pink */
+}
+
+.adv_list-item:nth-child(5) {
+    background-color: #537942;
+    /* Light Teal */
+}
+
+.adv_list-item:hover {
+    transform: scale(1.05);
+    /* Slightly enlarge the box on hover */
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+    /* Enhanced shadow on hover */
+}
+.Product_container-Medicines {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .Product_card-Medicines {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 300px;
+    height: 450px;
+    text-align: left;
+  }
+  
+  .Product_card-Medicines:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .Product_card-Medicines img {
+    width: 100%;
+    border-bottom: 1px solid #f0f0f0;
+    height: 300px;
+  }
+  
+  .Product_card-Medicines h2 {
+    font-size: 1.5em;
+    margin: 15px;
+    color: #333;
+  }
+  
+  .Product_card-Medicines p {
+    color: #666;
+    margin: 0 15px 15px;
+    font-size: 0.9em;
+  }
+  
+  .category_button-Medicines {
+    display: inline-block;
+    margin: 0 15px 15px;
+    padding: 5px 10px;
+    background-color: #296564;
+    color: white;
+    border-radius: 30px;
+    font-size: 0.8em;
+  }
+  
+  /* Additional animations */
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  .Product_card-Medicines {
+    animation: fadeIn 0.5s ease-in-out;
+  }

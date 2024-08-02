@@ -2,8 +2,8 @@
     <div class="profile-container">
         <div class="profile-header">
             <div>
-                <h1>Name Surname</h1>
-                <p class="label">Date of Birth: January 1, 1980</p>
+                <h1>UserName : <%= user.username %></h1>
+                <p class="label">Date of Birth: <%= user.dateOfBirth %></p>
             </div>
             <a href="/editProfile/<%= currentUser_Id %>" class="edit-icon">&#x270F;</a>
         </div>

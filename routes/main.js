@@ -42,6 +42,9 @@ router.get('/', async (req, res) => {
 router.get("/NursingCare", (req, res) => {
   res.render("NursingCare");
 });
+router.get("/ElderCare", (req, res) => {
+  res.render("ElderCare");
+});
 router.get("/EnquireNow", (req, res) => {
   res.render("EnquireNow");
 });
@@ -152,16 +155,6 @@ router.get("/AddProducts", (req, res) => {
   res.render("AddProducts");
 });
 
-// router.get("/Products", async (req, res) => {
-//   try {
-//     const data = await Product.find();
-//     res.render('Products', { data });
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).send("An error occurred while fetching the data.");
-//   }
-// });
-
 // Graphs
 router.get("/Revenue", (req, res) => {
   res.render("Revenue");
@@ -207,8 +200,18 @@ router.get("/IndividualCard", (req, res) => {
   res.render("IndividualCard");
 });
 // Profile
-router.get("/Profile", (req, res) => {
-  res.render("Profile");
+router.get("/Profile", async (req, res) => {
+  if (SignedIn) {
+    try {
+      const user = await User.findById(currentUser_Id);
+      console.log(user);
+      res.render("Profile", { user });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  } else{
+    res.redirect("/login");
+  }
 });
 // Edit Profile
 router.get("/editProfile/:id", async (req, res) => {
