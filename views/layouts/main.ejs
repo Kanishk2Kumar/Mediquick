@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= locals.title %></title>
+    <title>
+        <%= locals.title %>
+    </title>
     <meta name="description" content="<%= locals.description %>">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,33 +18,32 @@
     <script src="https://kit.fontawesome.com/d8bd919f93.js" crossorigin="anonymous"></script>
     <script type="text/javascript" defer src="/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </head>
-<body>
-    <% if(locals.layout == "None"){ %>
-        <%- body %>
-    <% } else { %>
-        <header>
-            <%- include('../partials/header.ejs') %>
-        </header>
-        <main class="main">
-            <%- body %>
-        </main>
-        <footer>
-            <%- include('../partials/footer.ejs') %>
-        </footer>
-    <% } %>
 
-    <!-- Chat popup HTML -->
-    <button class="chat-open-button" onclick="openChatForm()">Chat</button>
-    <div class="chat-popup-window" id="chatForm">
-      <form action="/action_page.php" class="chat-form-container">
-        <i class="fa-solid fa-chalkboard-user"></i> <h3>Chat with us</h3>
-        <label for="msg">Message</label>
-        <textarea placeholder="Type message.." name="msg" required></textarea>
-        <button type="submit" class="chat-send-button">Send</button>
-        <button type="button" class="chat-cancel-button" onclick="closeChatForm()">Close</button>
-      </form>
-    </div>
+<body>
+    <% if(locals.layout=="None" ){ %>
+        <%- body %>
+            <% } else { %>
+                <header>
+                    <%- include('../partials/header.ejs') %>
+                </header>
+                <main class="main">
+                    <%- body %>
+                </main>
+                <footer>
+                    <%- include('../partials/footer.ejs') %>
+                </footer>
+                <% } %>
+
+                    <!-- Chat popup HTML -->
+                    <button class="chat-open-button">
+                        <a href="https://ai.medquick.pp.ua" style="text-decoration: none;"
+                            target="_blank">MedQuickAI</a>
+                    </button>
+
 </body>
+
 </html>
