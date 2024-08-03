@@ -39,7 +39,13 @@
         </form>
     </div>
 </div>
-
+<div id="order-placed-popup" class="popup">
+    <div class="popup-content">
+        <span class="close">&times;</span>
+        <h2>Order placed successfully</h2>
+        <p style="font-size: 18px;">Your order has been placed successfully!</p>
+    </div>
+</div>
 <style>
     /* Popup styles */
     .popup {
@@ -102,6 +108,30 @@
     window.onclick = function(event) {
         if (event.target == popup) {
             popup.style.display = 'none';
+        }
+    }
+
+    const orderPlacedPopup = document.getElementById('order-placed-popup');
+
+    const buyNowBtn = document.querySelector('.buy-now-btn');
+
+    // Get the <span> element that closes the popup
+    const closeOrderPlacedBtn = orderPlacedPopup.getElementsByClassName('close')[0];
+
+    // When the user clicks the Buy Now button, open the Order Placed popup
+    buyNowBtn.onclick = function() {
+        orderPlacedPopup.style.display = 'block';
+    }
+
+    // When the user clicks on <span> (x), close the Order Placed popup
+    closeOrderPlacedBtn.onclick = function() {
+        orderPlacedPopup.style.display = 'none';
+    }
+
+    // When the user clicks anywhere outside of the Order Placed popup, close it
+    window.onclick = function(event) {
+        if (event.target == orderPlacedPopup) {
+            orderPlacedPopup.style.display = 'none';
         }
     }
 </script>

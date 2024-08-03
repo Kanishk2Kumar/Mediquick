@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
     try {
       const users = await User.find(); 
       console.log(users);
-      res.render('admin', { users }); // Render the 'admin' template and pass the user data
+      res.render('Admin', { users }); // Render the 'admin' template and pass the user data
     } catch (err) {
       res.status(500).json({ message: err.message });
     }

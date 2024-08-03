@@ -519,7 +519,7 @@ a:focus,
 a:active {
     text-decoration: none;
     outline: none;
-    background-color: #296564;
+    /* background-color: #296564; */
 }
 
 a,
@@ -1970,24 +1970,26 @@ h1 {
     text-align: center;
     transition: opacity 0.3s ease-in-out;
     /* Add transition for smooth hiding/showing */
-    height: 450px;
-    width: 400px;
+    height: 400px;
+    width: 360px;
 }
 
 .product_card img {
-    margin-top: 10px;
-    width: 70%;
-    height: 280px;
-    border: 3px solid var(--text-dark);
+    margin-top: 30px;
+    width: 250px;
+    height: 250px;
+    border: 1px solid var(--text-dark);
     border-radius: 8px;
     object-fit: cover;
+    margin-bottom: 10px;
 }
 
 .product_card h2 {
-    font-size: 1.5em;
+    font-size: 1.2rem;
     color: var(--primary-color);
     margin: 10px 0 0;
     padding: 0 10px;
+    margin-bottom: 8px;
 }
 
 .product_container a {
@@ -1996,9 +1998,10 @@ h1 {
 
 .product_card p {
     color: var(--primary-color-dark);
-    padding: 0 10px 10px;
+    padding: 0 5px 5px;
     max-height: 20px;
     overflow: hidden;
+    font-size: 13px;
 }
 
 .category_button {
@@ -2007,6 +2010,7 @@ h1 {
     padding: 5px 10px;
     border-radius: 5px;
     margin: 5px;
+    margin-top: 5px;
     font-size: 0.9em;
     text-align: center;
 }
@@ -2978,7 +2982,7 @@ h1 {
 
 .our-team .teampic img {
     width: 100%;
-    height: auto;
+    height: 100%;
     border-radius: 50%;
     transform: scale(1);
     transition: all 0.9s ease 0s;
@@ -3861,10 +3865,9 @@ body.eadv {
 
 .slider-container-N {
     position: relative;
-    margin-top: 50px;
     overflow: hidden;
     background-color: #D8E0D8;
-    padding: 130px;
+    padding: 100px;
 }
 
 .sliderN {
@@ -4262,12 +4265,6 @@ body.adv {
     /* Light Teal */
 }
 
-.adv_list-item:hover {
-    transform: scale(1.05);
-    /* Slightly enlarge the box on hover */
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
-    /* Enhanced shadow on hover */
-}
 .Product_container-Medicines {
     display: flex;
     flex-wrap: wrap;
@@ -4294,9 +4291,11 @@ body.adv {
   }
   
   .Product_card-Medicines img {
-    width: 100%;
+    width: 70%;
+    margin-left: 15%;
     border-bottom: 1px solid #f0f0f0;
-    height: 300px;
+    height: 250px;
+    margin-top: 20px;
   }
   
   .Product_card-Medicines h2 {
@@ -4308,7 +4307,7 @@ body.adv {
   .Product_card-Medicines p {
     color: #666;
     margin: 0 15px 15px;
-    font-size: 0.9em;
+    font-size: 0.8rem;
   }
   
   .category_button-Medicines {
@@ -4330,3 +4329,16 @@ body.adv {
   .Product_card-Medicines {
     animation: fadeIn 0.5s ease-in-out;
   }
+a:link {
+    text-decoration: none !important;
+}
+
+a:visited {
+    text-decoration: none !important;
+}
+a:hover {
+    text-decoration: none !important;
+}
+a:active {
+    text-decoration: none !important;
+}

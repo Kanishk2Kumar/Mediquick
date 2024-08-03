@@ -58,7 +58,7 @@ app.set('views', templates_path);
 
 // Auth Route
 app.get("/login", (req, res) => {
-  res.render("login", {layout: false});
+  res.render("Login", {layout: false});
 });
 
 //REGISTER
