@@ -88,5 +88,5 @@ MEDIQUICK is a comprehensive healthcare platform designed to provide accessible 
    ```sh
    npm start
    ```
-2. Open your browser and visit `http://localhost:3000`
+2. Open your browser and visit `http://localhost:5000`
 
