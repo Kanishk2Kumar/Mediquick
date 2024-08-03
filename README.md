@@ -1,6 +1,3 @@
-Sure, here’s a more concise and README-friendly version:
-
----
 
 # MEDIQUICK
 
